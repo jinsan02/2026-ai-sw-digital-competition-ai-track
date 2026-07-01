@@ -1,0 +1,22 @@
+# 대회 배포 데이터 (용량 큼, 원본은 open.zip 재다운로드로 복구)
+open/data/
+open/baseline_submit.zip
+
+# 모델 가중치 (학습 노트북으로 재생성)
+submit/model/*.pkl
+submit/model/*.onnx
+submit/model/*.pt
+
+# 로컬 제출 아카이브
+submissions/*.zip
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
