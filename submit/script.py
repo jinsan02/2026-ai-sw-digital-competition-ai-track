@@ -1,9 +1,13 @@
-"""[Baseline] TF-IDF + 로지스틱 회귀 — 추론 (script.py)
+"""[v2] TF-IDF + 로지스틱 회귀 — 추론 (script.py)
 
-AI 코딩 에이전트의 **다음 행동(action)** 을 14개 클래스 중 하나로 예측하는 베이스라인의
-'추론' 코드입니다. 학습 노트북이 저장한 모델(`./model/tfidf_logreg.pkl`)을 불러와
-테스트 데이터(`./data/test.jsonl`)에 대한 예측을 수행하고, 제출 파일
+AI 코딩 에이전트의 **다음 행동(action)** 을 14개 클래스 중 하나로 예측하는 모델의
+'추론' 코드입니다. 학습 스크립트(src/train.py)가 저장한 모델(`./model/tfidf_logreg.pkl`)을
+불러와 테스트 데이터(`./data/test.jsonl`)에 대한 예측을 수행하고, 제출 파일
 (`./output/submission.csv`)을 생성합니다.
+
+v2: current_prompt 텍스트에 history/session_meta 기반 카테고리 피처(직전 행동명, turn_index
+구간, git_dirty, open_files 존재여부, last_ci_status)를 pseudo-token으로 붙여 학습/추론.
+build_input_text()는 src/train.py와 반드시 동일해야 한다 (다르면 모델-입력 불일치로 성능 붕괴).
 
 [ 코드 제출 방식 ]
 이 대회는 결과 CSV가 아니라 '코드'를 제출합니다. 아래 구조의 zip을 제출하면,
@@ -31,12 +35,44 @@ import joblib
 
 
 # =======================
-# 2. 입력 전처리 유틸 (학습 때와 동일하게 current_prompt만 사용)
+# 2. 입력 전처리 유틸 (학습 때와 동일한 방식으로 텍스트 구성)
 # =======================
 # 추론 입력은 반드시 '학습 때와 똑같은 방식'으로 만들어야 합니다.
-# 학습에서 입력으로 current_prompt 문자열만 사용했으므로, 여기서도 동일하게 뽑습니다.
+# src/train.py의 build_input_text()와 동일한 로직입니다.
 
 REQUIRED_KEYS = ("id", "session_meta", "history", "current_prompt")
+
+
+def last_action_name(sample):
+    for turn in reversed(sample.get("history") or []):
+        if turn.get("role") == "assistant_action":
+            return turn.get("name")
+    return "NONE"
+
+
+def turn_bucket(turn_index):
+    if turn_index == 0:
+        return "first"
+    if turn_index <= 3:
+        return "early"
+    if turn_index <= 8:
+        return "mid"
+    return "late"
+
+
+def build_input_text(sample):
+    """current_prompt + history/session_meta 카테고리 피처(pseudo-token). src/train.py와 동일 로직."""
+    meta = sample.get("session_meta") or {}
+    ws = meta.get("workspace") or {}
+    parts = [
+        sample.get("current_prompt") or "",
+        "__PREV_" + str(last_action_name(sample)),
+        "__CI_" + str(ws.get("last_ci_status")),
+        "__DIRTY_" + str(ws.get("git_dirty")),
+        "__TURN_" + turn_bucket(meta.get("turn_index", 0)),
+        "__OPENFILES_" + str(bool(ws.get("open_files"))),
+    ]
+    return " ".join(parts)
 
 
 def load_jsonl(path):
@@ -69,15 +105,8 @@ def validate_samples(samples):
 
 
 def extract_text(sample):
-    """모델 입력 텍스트 추출 — 학습 때와 동일하게 current_prompt만 사용.
-
-    TF-IDF 파이프라인이 토큰화/벡터화를 모두 포함하므로 여기서는
-    문자열만 뽑는다. current_prompt가 없거나 문자열이 아니면 빈 문자열.
-    """
-    text = sample.get("current_prompt", "")
-    if not isinstance(text, str):
-        text = "" if text is None else str(text)
-    return text
+    """모델 입력 텍스트 추출 — build_input_text()로 학습 때와 동일하게 구성."""
+    return build_input_text(sample)
 
 
 def build_features(samples):

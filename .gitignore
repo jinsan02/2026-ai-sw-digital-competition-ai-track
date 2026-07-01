@@ -1,22 +1,51 @@
-# 대회 배포 데이터 (용량 큼, 원본은 open.zip 재다운로드로 복구)
+# === 대회 배포 데이터 (용량 큼, 원본은 open.zip 재다운로드로 복구) ===
 open/data/
 open/baseline_submit.zip
+open/baseline_submit/
+**/data/test.jsonl
+**/data/train.jsonl
+**/data/train_labels.csv
 
-# 모델 가중치 (학습 노트북으로 재생성)
-submit/model/*.pkl
-submit/model/*.onnx
-submit/model/*.pt
+# === 모델 가중치 (학습 코드로 재생성) ===
+*.pkl
+*.joblib
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.bin
+submit/model/
+model/
+model_xlmr/
 
-# 로컬 제출 아카이브
+# === 제출 아카이브 ===
 submissions/*.zip
+submit.zip
+submit_*.zip
+*.zip
 
-# Python
+# === 학습 산출물/로그 ===
+catboost_info/
+experiments/artifacts/
+output/
+runs/
+wandb/
+checkpoints/
+*.log
+
+# === Python ===
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
 .venv/
 venv/
+.cache/
 
-# OS
+# === 팀원 작업물 (참고용 로컬 보관, 이 레포에 커밋 금지) ===
+teammate_output/
+
+# === OS ===
 .DS_Store
 Thumbs.db
+desktop.ini
