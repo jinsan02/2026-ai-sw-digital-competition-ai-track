@@ -1,0 +1,493 @@
+{
+  "experiment_id": "sparse_text_current_v1_dev",
+  "created_utc": "2026-07-02T07:40:04.477326+00:00",
+  "source_oof_artifact": "experiments/artifacts/oof_focal_len192_ep5_s1_oof_metrics.json",
+  "source_rule_artifact": "",
+  "row_count": 70000,
+  "classes": [
+    "read_file",
+    "grep_search",
+    "list_directory",
+    "glob_pattern",
+    "edit_file",
+    "write_file",
+    "apply_patch",
+    "run_bash",
+    "run_tests",
+    "lint_or_typecheck",
+    "ask_user",
+    "plan_task",
+    "web_search",
+    "respond_only"
+  ],
+  "args": {
+    "oof_artifact": "experiments/artifacts/oof_focal_len192_ep5_s1_oof_metrics.json",
+    "rule_artifact": "",
+    "data_dir": "/mnt/c/dacon/open/data",
+    "experiment_id": "sparse_text_current_v1_dev",
+    "c": 0.05,
+    "class_weight": "balanced",
+    "max_iter": 3000,
+    "word_features": 180000,
+    "char_features": 220000,
+    "word_min_df": 2,
+    "char_min_df": 2,
+    "normalize": false,
+    "weights": "0,0.02,0.05,0.08,0.1,0.15,0.2,0.3,0.4,0.5,0.7,1.0",
+    "tune_bias": false,
+    "seed": 42,
+    "sparse_text": "current_v1",
+    "notes": "sparse text A/B: current_v1 on no-replay OOF"
+  },
+  "fold_summaries": [
+    {
+      "train_rows": 46666,
+      "val_rows": 23334,
+      "elapsed_sec": 68.50291586299863,
+      "feature_count": 379563
+    },
+    {
+      "train_rows": 46667,
+      "val_rows": 23333,
+      "elapsed_sec": 68.45461968000018,
+      "feature_count": 380007
+    },
+    {
+      "train_rows": 46667,
+      "val_rows": 23333,
+      "elapsed_sec": 68.15146807800011,
+      "feature_count": 378584
+    }
+  ],
+  "sparse_metrics": {
+    "macro_f1": 0.536345428237339,
+    "per_class_f1": {
+      "read_file": 0.375743162901308,
+      "grep_search": 0.3448321968177564,
+      "list_directory": 0.4283507145616068,
+      "glob_pattern": 0.4075976354297897,
+      "edit_file": 0.742733228753345,
+      "write_file": 0.8412561221549986,
+      "apply_patch": 0.5298609751321716,
+      "run_bash": 0.6356750615413748,
+      "run_tests": 0.5763629574309186,
+      "lint_or_typecheck": 0.400765794511806,
+      "ask_user": 0.4404979860856829,
+      "plan_task": 0.4731081926203877,
+      "web_search": 0.3196459306614212,
+      "respond_only": 0.9924060367201769
+    },
+    "prediction_distribution": {
+      "apply_patch": 5391,
+      "ask_user": 2761,
+      "edit_file": 10503,
+      "glob_pattern": 5035,
+      "grep_search": 5046,
+      "lint_or_typecheck": 3985,
+      "list_directory": 6027,
+      "plan_task": 3717,
+      "read_file": 5881,
+      "respond_only": 5225,
+      "run_bash": 5494,
+      "run_tests": 6151,
+      "web_search": 2794,
+      "write_file": 1990
+    },
+    "top_confusions": [
+      [
+        1571,
+        "read_file",
+        "list_directory"
+      ],
+      [
+        1563,
+        "grep_search",
+        "read_file"
+      ],
+      [
+        1324,
+        "read_file",
+        "grep_search"
+      ],
+      [
+        1307,
+        "grep_search",
+        "list_directory"
+      ],
+      [
+        1064,
+        "grep_search",
+        "glob_pattern"
+      ],
+      [
+        999,
+        "apply_patch",
+        "edit_file"
+      ],
+      [
+        944,
+        "edit_file",
+        "apply_patch"
+      ],
+      [
+        888,
+        "read_file",
+        "glob_pattern"
+      ],
+      [
+        817,
+        "ask_user",
+        "plan_task"
+      ],
+      [
+        674,
+        "glob_pattern",
+        "list_directory"
+      ],
+      [
+        627,
+        "glob_pattern",
+        "read_file"
+      ],
+      [
+        623,
+        "plan_task",
+        "ask_user"
+      ],
+      [
+        582,
+        "grep_search",
+        "apply_patch"
+      ],
+      [
+        571,
+        "run_bash",
+        "run_tests"
+      ],
+      [
+        570,
+        "list_directory",
+        "read_file"
+      ],
+      [
+        542,
+        "run_tests",
+        "lint_or_typecheck"
+      ],
+      [
+        539,
+        "lint_or_typecheck",
+        "run_tests"
+      ],
+      [
+        539,
+        "grep_search",
+        "run_tests"
+      ],
+      [
+        516,
+        "edit_file",
+        "run_tests"
+      ],
+      [
+        509,
+        "run_tests",
+        "run_bash"
+      ]
+    ]
+  },
+  "base_metrics": {
+    "macro_f1": 0.7227689997777986,
+    "per_class_f1": {
+      "read_file": 0.5528397923701053,
+      "grep_search": 0.5981672394043528,
+      "list_directory": 0.47155648005788187,
+      "glob_pattern": 0.6425913766688554,
+      "edit_file": 0.9643604004449389,
+      "write_file": 0.9902060114826072,
+      "apply_patch": 0.926829268292683,
+      "run_bash": 0.7874031797798614,
+      "run_tests": 0.7333750260579529,
+      "lint_or_typecheck": 0.591268943677901,
+      "ask_user": 0.6198123044838373,
+      "plan_task": 0.6734548052876027,
+      "web_search": 0.567576909782233,
+      "respond_only": 0.9993242590983685
+    },
+    "prediction_distribution": {
+      "apply_patch": 4771,
+      "ask_user": 2094,
+      "edit_file": 11304,
+      "glob_pattern": 3854,
+      "grep_search": 7548,
+      "lint_or_typecheck": 2138,
+      "list_directory": 6728,
+      "plan_task": 2919,
+      "read_file": 10586,
+      "respond_only": 5181,
+      "run_bash": 4744,
+      "run_tests": 5033,
+      "web_search": 1620,
+      "write_file": 1480
+    },
+    "top_confusions": [
+      [
+        2878,
+        "grep_search",
+        "read_file"
+      ],
+      [
+        1943,
+        "read_file",
+        "list_directory"
+      ],
+      [
+        1407,
+        "grep_search",
+        "list_directory"
+      ],
+      [
+        1348,
+        "read_file",
+        "grep_search"
+      ],
+      [
+        1113,
+        "list_directory",
+        "read_file"
+      ],
+      [
+        1048,
+        "glob_pattern",
+        "read_file"
+      ],
+      [
+        851,
+        "run_bash",
+        "run_tests"
+      ],
+      [
+        757,
+        "ask_user",
+        "plan_task"
+      ],
+      [
+        734,
+        "glob_pattern",
+        "list_directory"
+      ],
+      [
+        635,
+        "lint_or_typecheck",
+        "run_tests"
+      ],
+      [
+        518,
+        "glob_pattern",
+        "grep_search"
+      ],
+      [
+        508,
+        "run_tests",
+        "lint_or_typecheck"
+      ],
+      [
+        494,
+        "run_tests",
+        "run_bash"
+      ],
+      [
+        416,
+        "list_directory",
+        "grep_search"
+      ],
+      [
+        416,
+        "ask_user",
+        "web_search"
+      ],
+      [
+        399,
+        "read_file",
+        "glob_pattern"
+      ],
+      [
+        397,
+        "plan_task",
+        "ask_user"
+      ],
+      [
+        366,
+        "apply_patch",
+        "edit_file"
+      ],
+      [
+        360,
+        "plan_task",
+        "web_search"
+      ],
+      [
+        332,
+        "grep_search",
+        "glob_pattern"
+      ]
+    ]
+  },
+  "metrics": {
+    "macro_f1": 0.7294943188732894,
+    "per_class_f1": {
+      "read_file": 0.5573484069886948,
+      "grep_search": 0.5993622594237559,
+      "list_directory": 0.4819880218110307,
+      "glob_pattern": 0.6438961318823403,
+      "edit_file": 0.9624800425758382,
+      "write_file": 0.9895446880269815,
+      "apply_patch": 0.921865154379332,
+      "run_bash": 0.7972697636511817,
+      "run_tests": 0.7584763499372122,
+      "lint_or_typecheck": 0.6104507737160798,
+      "ask_user": 0.6175567833026396,
+      "plan_task": 0.6737891737891738,
+      "web_search": 0.599568655643422,
+      "respond_only": 0.9993242590983685
+    },
+    "prediction_distribution": {
+      "apply_patch": 4699,
+      "ask_user": 2186,
+      "edit_file": 11377,
+      "glob_pattern": 3997,
+      "grep_search": 7650,
+      "lint_or_typecheck": 2176,
+      "list_directory": 6858,
+      "plan_task": 2937,
+      "read_file": 10203,
+      "respond_only": 5181,
+      "run_bash": 4748,
+      "run_tests": 4995,
+      "web_search": 1509,
+      "write_file": 1484
+    },
+    "top_confusions": [
+      [
+        2723,
+        "grep_search",
+        "read_file"
+      ],
+      [
+        1894,
+        "read_file",
+        "list_directory"
+      ],
+      [
+        1467,
+        "grep_search",
+        "list_directory"
+      ],
+      [
+        1422,
+        "read_file",
+        "grep_search"
+      ],
+      [
+        1011,
+        "list_directory",
+        "read_file"
+      ],
+      [
+        988,
+        "glob_pattern",
+        "read_file"
+      ],
+      [
+        786,
+        "ask_user",
+        "plan_task"
+      ],
+      [
+        766,
+        "glob_pattern",
+        "list_directory"
+      ],
+      [
+        756,
+        "run_bash",
+        "run_tests"
+      ],
+      [
+        586,
+        "lint_or_typecheck",
+        "run_tests"
+      ],
+      [
+        496,
+        "glob_pattern",
+        "grep_search"
+      ],
+      [
+        464,
+        "plan_task",
+        "ask_user"
+      ],
+      [
+        451,
+        "run_tests",
+        "run_bash"
+      ],
+      [
+        445,
+        "run_tests",
+        "lint_or_typecheck"
+      ],
+      [
+        433,
+        "read_file",
+        "glob_pattern"
+      ],
+      [
+        423,
+        "apply_patch",
+        "edit_file"
+      ],
+      [
+        423,
+        "list_directory",
+        "grep_search"
+      ],
+      [
+        385,
+        "grep_search",
+        "glob_pattern"
+      ],
+      [
+        364,
+        "ask_user",
+        "web_search"
+      ],
+      [
+        345,
+        "run_bash",
+        "lint_or_typecheck"
+      ]
+    ]
+  },
+  "best_sparse_weight": 1.0,
+  "best_raw_macro_f1": 0.7294943188732894,
+  "best_class_bias": {
+    "read_file": 0.0,
+    "grep_search": 0.0,
+    "list_directory": 0.0,
+    "glob_pattern": 0.0,
+    "edit_file": 0.0,
+    "write_file": 0.0,
+    "apply_patch": 0.0,
+    "run_bash": 0.0,
+    "run_tests": 0.0,
+    "lint_or_typecheck": 0.0,
+    "ask_user": 0.0,
+    "plan_task": 0.0,
+    "web_search": 0.0,
+    "respond_only": 0.0
+  },
+  "sparse_logits_path": "experiments/logits/sparse_text_current_v1_dev_sparse_oof_logits.pt",
+  "rule_count": 0
+}

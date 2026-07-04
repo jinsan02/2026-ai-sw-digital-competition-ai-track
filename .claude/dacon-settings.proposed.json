@@ -1,0 +1,75 @@
+{
+  "_comment": "DACON 236694 하네스 제안본 — 검토 후 settings.json 으로 rename 해서 활성화하세요.",
+  "_doc": "원본 Next.js/SaaS 템플릿을 DACON 환경으로 각색: ssh/scp/python 허용, Write 경로 Python화, pnpm/prisma 제거.",
+
+  "permissions": {
+    "allow": [
+      "Read(*)",
+
+      "Write(*.py)",
+      "Write(*.md)",
+      "Write(*.txt)",
+      "Write(*.json)",
+      "Write(src/**)",
+      "Write(submit/**)",
+      "Write(notebooks/**)",
+      "Write(experiments/**)",
+      "Write(scripts/**)",
+      "Write(roadmap/**)",
+
+      "Bash(python*)",
+      "Bash(pip show*)",
+      "Bash(pip list*)",
+      "Bash(pip freeze*)",
+      "Bash(wsl*)",
+      "Bash(nvidia-smi*)",
+      "Bash(ssh desktop-3060*)",
+      "Bash(scp*)",
+      "Bash(unzip -l*)",
+
+      "Bash(git status)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git branch*)"
+    ],
+
+    "ask": [
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(git push*)",
+      "Bash(git reset*)",
+      "Bash(git checkout*)",
+      "Bash(pip install*)",
+      "Bash(python -m pip install*)"
+    ],
+
+    "deny": [
+      "Bash(rm -rf /*)",
+      "Bash(sudo *)",
+      "Bash(chmod -R 777*)",
+      "Bash(curl * | bash)",
+      "Bash(curl * | sh)",
+      "Bash(wget * | bash)",
+      "Bash(mkfs*)",
+      "Bash(dd if=* of=/dev*)",
+
+      "Write(open/data/**)",
+      "Write(.git/**)",
+      "Write(venv/**)"
+    ]
+  },
+
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "Bash",  "hooks": [{ "type": "command", "command": "bash .claude/hooks/pre-bash-guard.sh" }] },
+      { "matcher": "Write", "hooks": [{ "type": "command", "command": "bash .claude/hooks/pre-write-guard.sh" }] }
+    ],
+    "PostToolUse": [
+      { "matcher": "Write", "hooks": [{ "type": "command", "command": "bash .claude/hooks/post-write-verify.sh" }] },
+      { "matcher": "Bash",  "hooks": [{ "type": "command", "command": "bash .claude/hooks/post-bash-log.sh" }] }
+    ],
+    "Stop": [
+      { "hooks": [{ "type": "command", "command": "bash .claude/hooks/session-end-summary.sh" }] }
+    ]
+  }
+}

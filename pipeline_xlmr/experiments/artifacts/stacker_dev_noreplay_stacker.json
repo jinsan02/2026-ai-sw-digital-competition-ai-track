@@ -1,0 +1,27 @@
+{
+  "experiment_id": "stacker_dev_noreplay",
+  "created_utc": "2026-07-02T05:57:45.237802+00:00",
+  "oof_artifact": "experiments/artifacts/oof_focal_len192_ep5_s1_oof_metrics.json",
+  "sparse_logits": "",
+  "feature_dim": 63,
+  "baseline_raw_oof_macro_f1": 0.7186569440180576,
+  "stacked_raw_oof_macro_f1": 0.713348931567789,
+  "notes": "stacker dev run on no-replay OOF logits",
+  "stacked_tuned_oof_macro_f1": 0.7200228460362201,
+  "stacked_class_bias": {
+    "read_file": -0.18000000715255737,
+    "grep_search": -0.4000000059604645,
+    "list_directory": 0.07999999821186066,
+    "glob_pattern": -0.5799999833106995,
+    "edit_file": 0.20000000298023224,
+    "write_file": -1.5,
+    "apply_patch": 0.2800000011920929,
+    "run_bash": -0.6399999856948853,
+    "run_tests": -0.47999998927116394,
+    "lint_or_typecheck": -0.14000000059604645,
+    "ask_user": -0.2199999988079071,
+    "plan_task": 0.20000000298023224,
+    "web_search": 0.30000001192092896,
+    "respond_only": -3.0
+  }
+}

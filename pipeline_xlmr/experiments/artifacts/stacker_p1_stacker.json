@@ -1,0 +1,27 @@
+{
+  "experiment_id": "stacker_p1",
+  "created_utc": "2026-07-02T10:49:27.854103+00:00",
+  "oof_artifact": "experiments/artifacts/oof_focal_replay_p1_oof_metrics.json",
+  "sparse_logits": "experiments/logits/sparse_p1_sparse_oof_logits.pt",
+  "feature_dim": 77,
+  "baseline_raw_oof_macro_f1": 0.7295904977334517,
+  "stacked_raw_oof_macro_f1": 0.7348305040130166,
+  "notes": "P2 stacker on P1 OOF + sparse margins",
+  "stacked_tuned_oof_macro_f1": 0.7385252210846854,
+  "stacked_class_bias": {
+    "read_file": -0.23999999463558197,
+    "grep_search": -0.4399999976158142,
+    "list_directory": 0.10000000149011612,
+    "glob_pattern": -0.5199999809265137,
+    "edit_file": 0.0,
+    "write_file": 1.399999976158142,
+    "apply_patch": 0.4000000059604645,
+    "run_bash": -0.4000000059604645,
+    "run_tests": -0.36000001430511475,
+    "lint_or_typecheck": 0.0,
+    "ask_user": 0.0,
+    "plan_task": 0.0,
+    "web_search": 0.10000000149011612,
+    "respond_only": 2.0
+  }
+}

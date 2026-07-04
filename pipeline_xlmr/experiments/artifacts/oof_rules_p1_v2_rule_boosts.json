@@ -1,0 +1,452 @@
+{
+  "experiment_id": "oof_rules_p1_v2",
+  "created_utc": "2026-07-03T06:02:55.985255+00:00",
+  "source_oof_artifact": "experiments/artifacts/oof_focal_replay_p1_oof_metrics.json",
+  "fold_logits": [
+    "experiments/logits/20260702_082600_gpu_transformer_session_oof_current_v1_len192_fold0-of3_replay-last1_P1-OOF-fold0-focal-replay-len192-5ep-best-epoch_val_logits.pt",
+    "experiments/logits/20260702_091750_gpu_transformer_session_oof_current_v1_len192_fold1-of3_replay-last1_P1-OOF-fold1_val_logits.pt",
+    "experiments/logits/20260702_101002_gpu_transformer_session_oof_current_v1_len192_fold2-of3_replay-last1_P1-OOF-fold2_val_logits.pt"
+  ],
+  "row_count": 70000,
+  "classes": [
+    "read_file",
+    "grep_search",
+    "list_directory",
+    "glob_pattern",
+    "edit_file",
+    "write_file",
+    "apply_patch",
+    "run_bash",
+    "run_tests",
+    "lint_or_typecheck",
+    "ask_user",
+    "plan_task",
+    "web_search",
+    "respond_only"
+  ],
+  "class_bias": {
+    "read_file": -0.019999999552965164,
+    "grep_search": -0.18000000715255737,
+    "list_directory": 0.07999999821186066,
+    "glob_pattern": -0.5400000214576721,
+    "edit_file": 0.4399999976158142,
+    "write_file": -1.1200000047683716,
+    "apply_patch": 0.0,
+    "run_bash": 0.30000001192092896,
+    "run_tests": 0.3400000035762787,
+    "lint_or_typecheck": -0.10000000149011612,
+    "ask_user": -0.03999999910593033,
+    "plan_task": 0.0,
+    "web_search": -0.6600000262260437,
+    "respond_only": -2.0
+  },
+  "base_metrics": {
+    "macro_f1": 0.7350016959188492,
+    "per_class_f1": {
+      "read_file": 0.5615388370844114,
+      "grep_search": 0.5961805555555556,
+      "list_directory": 0.45429362880886426,
+      "glob_pattern": 0.6419993508601104,
+      "edit_file": 0.9701225512120941,
+      "write_file": 0.993238674780257,
+      "apply_patch": 0.9389903995044906,
+      "run_bash": 0.7953808752025932,
+      "run_tests": 0.7761594876562339,
+      "lint_or_typecheck": 0.6277985074626866,
+      "ask_user": 0.6193751228139124,
+      "plan_task": 0.6649132035770647,
+      "web_search": 0.6506119226213976,
+      "respond_only": 0.9994206257242179
+    },
+    "prediction_distribution": {
+      "apply_patch": 4864,
+      "ask_user": 2388,
+      "edit_file": 11187,
+      "glob_pattern": 3959,
+      "grep_search": 7368,
+      "lint_or_typecheck": 2005,
+      "list_directory": 6140,
+      "plan_task": 3024,
+      "read_file": 11226,
+      "respond_only": 5178,
+      "run_bash": 4804,
+      "run_tests": 5120,
+      "web_search": 1260,
+      "write_file": 1477
+    },
+    "top_confusions": [
+      [
+        3010,
+        "grep_search",
+        "read_file"
+      ],
+      [
+        1754,
+        "read_file",
+        "list_directory"
+      ],
+      [
+        1301,
+        "list_directory",
+        "read_file"
+      ],
+      [
+        1297,
+        "grep_search",
+        "list_directory"
+      ],
+      [
+        1249,
+        "read_file",
+        "grep_search"
+      ],
+      [
+        1105,
+        "glob_pattern",
+        "read_file"
+      ],
+      [
+        860,
+        "ask_user",
+        "plan_task"
+      ],
+      [
+        778,
+        "run_bash",
+        "run_tests"
+      ],
+      [
+        677,
+        "glob_pattern",
+        "list_directory"
+      ],
+      [
+        563,
+        "plan_task",
+        "ask_user"
+      ],
+      [
+        553,
+        "lint_or_typecheck",
+        "run_tests"
+      ],
+      [
+        484,
+        "glob_pattern",
+        "grep_search"
+      ],
+      [
+        444,
+        "list_directory",
+        "grep_search"
+      ],
+      [
+        443,
+        "run_tests",
+        "run_bash"
+      ],
+      [
+        420,
+        "read_file",
+        "glob_pattern"
+      ],
+      [
+        375,
+        "grep_search",
+        "glob_pattern"
+      ],
+      [
+        362,
+        "lint_or_typecheck",
+        "run_bash"
+      ],
+      [
+        329,
+        "run_tests",
+        "lint_or_typecheck"
+      ],
+      [
+        310,
+        "run_bash",
+        "lint_or_typecheck"
+      ],
+      [
+        290,
+        "edit_file",
+        "apply_patch"
+      ]
+    ]
+  },
+  "metrics": {
+    "macro_f1": 0.7415544735282068,
+    "per_class_f1": {
+      "read_file": 0.5615388370844114,
+      "grep_search": 0.5961805555555556,
+      "list_directory": 0.4544672718585762,
+      "glob_pattern": 0.6419993508601104,
+      "edit_file": 0.9701225512120941,
+      "write_file": 0.9928982076428813,
+      "apply_patch": 0.9389903995044906,
+      "run_bash": 0.8005531956929763,
+      "run_tests": 0.7776708373435997,
+      "lint_or_typecheck": 0.6345933562428407,
+      "ask_user": 0.6533485540334856,
+      "plan_task": 0.6841439161092027,
+      "web_search": 0.6758349705304518,
+      "respond_only": 0.9994206257242179
+    },
+    "prediction_distribution": {
+      "apply_patch": 4864,
+      "ask_user": 2555,
+      "edit_file": 11187,
+      "glob_pattern": 3959,
+      "grep_search": 7368,
+      "lint_or_typecheck": 2082,
+      "list_directory": 6136,
+      "plan_task": 2852,
+      "read_file": 11226,
+      "respond_only": 5178,
+      "run_bash": 5055,
+      "run_tests": 4790,
+      "web_search": 1272,
+      "write_file": 1476
+    },
+    "top_confusions": [
+      [
+        3010,
+        "grep_search",
+        "read_file"
+      ],
+      [
+        1753,
+        "read_file",
+        "list_directory"
+      ],
+      [
+        1301,
+        "list_directory",
+        "read_file"
+      ],
+      [
+        1296,
+        "grep_search",
+        "list_directory"
+      ],
+      [
+        1249,
+        "read_file",
+        "grep_search"
+      ],
+      [
+        1105,
+        "glob_pattern",
+        "read_file"
+      ],
+      [
+        738,
+        "ask_user",
+        "plan_task"
+      ],
+      [
+        677,
+        "glob_pattern",
+        "list_directory"
+      ],
+      [
+        615,
+        "run_bash",
+        "run_tests"
+      ],
+      [
+        573,
+        "plan_task",
+        "ask_user"
+      ],
+      [
+        561,
+        "run_tests",
+        "run_bash"
+      ],
+      [
+        515,
+        "lint_or_typecheck",
+        "run_tests"
+      ],
+      [
+        484,
+        "glob_pattern",
+        "grep_search"
+      ],
+      [
+        444,
+        "list_directory",
+        "grep_search"
+      ],
+      [
+        420,
+        "read_file",
+        "glob_pattern"
+      ],
+      [
+        375,
+        "grep_search",
+        "glob_pattern"
+      ],
+      [
+        361,
+        "lint_or_typecheck",
+        "run_bash"
+      ],
+      [
+        345,
+        "run_bash",
+        "lint_or_typecheck"
+      ],
+      [
+        332,
+        "run_tests",
+        "lint_or_typecheck"
+      ],
+      [
+        290,
+        "edit_file",
+        "apply_patch"
+      ]
+    ]
+  },
+  "rules": [
+    {
+      "round": 1,
+      "feature": "turn:01",
+      "target": "plan_task",
+      "boost": 0.6,
+      "support": 9000,
+      "changed": 230,
+      "gain": 0.0015450119972229004,
+      "macro_f1": 0.7365466356277466
+    },
+    {
+      "round": 2,
+      "feature": "margin_le:0.25",
+      "target": "plan_task",
+      "boost": -0.2,
+      "support": 8898,
+      "changed": 324,
+      "gain": 0.0011624693870544434,
+      "macro_f1": 0.737709105014801
+    },
+    {
+      "round": 3,
+      "feature": "recent_action:grep_search|top:plan_task",
+      "target": "web_search",
+      "boost": 0.6,
+      "support": 493,
+      "changed": 53,
+      "gain": 0.0005787014961242676,
+      "macro_f1": 0.7382878065109253
+    },
+    {
+      "round": 4,
+      "feature": "top_lang:rs",
+      "target": "web_search",
+      "boost": -0.6,
+      "support": 7881,
+      "changed": 19,
+      "gain": 0.00044727325439453125,
+      "macro_f1": 0.7387350797653198
+    },
+    {
+      "round": 5,
+      "feature": "top_lang:yaml",
+      "target": "ask_user",
+      "boost": 0.6,
+      "support": 4328,
+      "changed": 81,
+      "gain": 0.0004241466522216797,
+      "macro_f1": 0.7391592264175415
+    },
+    {
+      "round": 6,
+      "feature": "last_action:write_file",
+      "target": "plan_task",
+      "boost": 0.6,
+      "support": 1446,
+      "changed": 34,
+      "gain": 0.0003775954246520996,
+      "macro_f1": 0.7395368218421936
+    },
+    {
+      "round": 7,
+      "feature": "prompt_prompt_len_m|top:web_search",
+      "target": "web_search",
+      "boost": -0.2,
+      "support": 854,
+      "changed": 67,
+      "gain": 0.0003685951232910156,
+      "macro_f1": 0.7399054169654846
+    },
+    {
+      "round": 8,
+      "feature": "recent_action:edit_file|top:run_bash",
+      "target": "lint_or_typecheck",
+      "boost": 0.2,
+      "support": 489,
+      "changed": 64,
+      "gain": 0.00033915042877197266,
+      "macro_f1": 0.7402445673942566
+    },
+    {
+      "round": 9,
+      "feature": "top_lang:py|pair:plan_task>ask_user",
+      "target": "web_search",
+      "boost": 0.6,
+      "support": 1157,
+      "changed": 27,
+      "gain": 0.0003141164779663086,
+      "macro_f1": 0.7405586838722229
+    },
+    {
+      "round": 10,
+      "feature": "last_pair:read_file>read_file",
+      "target": "web_search",
+      "boost": 0.6,
+      "support": 1196,
+      "changed": 15,
+      "gain": 0.0003547072410583496,
+      "macro_f1": 0.7409133911132812
+    },
+    {
+      "round": 11,
+      "feature": "top_lang:tsx",
+      "target": "run_tests",
+      "boost": -0.6,
+      "support": 5841,
+      "changed": 31,
+      "gain": 0.00030815601348876953,
+      "macro_f1": 0.74122154712677
+    },
+    {
+      "round": 12,
+      "feature": "base_top:run_tests",
+      "target": "run_bash",
+      "boost": 0.4,
+      "support": 5120,
+      "changed": 305,
+      "gain": 0.00033289194107055664,
+      "macro_f1": 0.7415544390678406
+    }
+  ],
+  "args": {
+    "oof_artifact": "experiments/artifacts/oof_focal_replay_p1_oof_metrics.json",
+    "data_dir": "/mnt/c/dacon/open/data",
+    "experiment_id": "oof_rules_p1_v2",
+    "min_support": 40,
+    "max_support_ratio": 0.6,
+    "min_target_count": 8,
+    "max_rules": 12,
+    "max_features": 1200,
+    "min_gain": 5e-05,
+    "boost_values": "-0.60,-0.40,-0.20,0.20,0.40,0.60",
+    "notes": "E2: expanded features (test-path, question, last_user)"
+  }
+}

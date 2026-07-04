@@ -1,0 +1,27 @@
+{
+  "experiment_id": "stacker_dev_with_sparse",
+  "created_utc": "2026-07-02T07:45:17.218890+00:00",
+  "oof_artifact": "experiments/artifacts/oof_focal_len192_ep5_s1_oof_metrics.json",
+  "sparse_logits": "experiments/logits/sparse_text_current_v1_dev_sparse_oof_logits.pt",
+  "feature_dim": 77,
+  "baseline_raw_oof_macro_f1": 0.7186569440180576,
+  "stacked_raw_oof_macro_f1": 0.7288720484856286,
+  "notes": "stacker full design: logits + sparse margins + features",
+  "stacked_tuned_oof_macro_f1": 0.7333253951652908,
+  "stacked_class_bias": {
+    "read_file": -0.05999999865889549,
+    "grep_search": -0.23999999463558197,
+    "list_directory": 0.20000000298023224,
+    "glob_pattern": -0.30000001192092896,
+    "edit_file": -0.10000000149011612,
+    "write_file": -1.4800000190734863,
+    "apply_patch": -0.10000000149011612,
+    "run_bash": 0.019999999552965164,
+    "run_tests": 0.03999999910593033,
+    "lint_or_typecheck": 0.6000000238418579,
+    "ask_user": -0.14000000059604645,
+    "plan_task": 0.019999999552965164,
+    "web_search": 0.0,
+    "respond_only": 0.0
+  }
+}

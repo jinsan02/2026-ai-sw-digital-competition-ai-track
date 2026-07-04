@@ -1,0 +1,49 @@
+{
+  "experiment_id": "e1_blend_v1",
+  "created_utc": "2026-07-03T05:48:18.318893+00:00",
+  "subset": [
+    "read_file",
+    "grep_search",
+    "list_directory",
+    "glob_pattern",
+    "web_search"
+  ],
+  "base_raw_macro_f1": 0.7295904977334517,
+  "blend_raw_macro_f1": 0.7330848539507339,
+  "margin": 1.0,
+  "weight": 1.5,
+  "notes": "E1 explore5 specialist blend on P1 OOF",
+  "blend_tuned_macro_f1": 0.7365880305771906,
+  "class_bias": {
+    "read_file": 0.10000000149011612,
+    "grep_search": -0.2199999988079071,
+    "list_directory": 0.4399999976158142,
+    "glob_pattern": -0.47999998927116394,
+    "edit_file": 0.4399999976158142,
+    "write_file": -1.1200000047683716,
+    "apply_patch": 0.0,
+    "run_bash": 0.30000001192092896,
+    "run_tests": 0.3400000035762787,
+    "lint_or_typecheck": -0.10000000149011612,
+    "ask_user": -0.03999999910593033,
+    "plan_task": 0.0,
+    "web_search": -1.0,
+    "respond_only": -2.0
+  },
+  "per_class_f1": {
+    "read_file": 0.5743771192687601,
+    "grep_search": 0.5913629255383135,
+    "list_directory": 0.4904740406320542,
+    "glob_pattern": 0.6434010152284264,
+    "edit_file": 0.9701579347680194,
+    "write_file": 0.993238674780257,
+    "apply_patch": 0.9389903995044906,
+    "run_bash": 0.7954568502180306,
+    "run_tests": 0.7759404712691195,
+    "lint_or_typecheck": 0.6277985074626866,
+    "ask_user": 0.6038657171922686,
+    "plan_task": 0.6591936358705478,
+    "web_search": 0.6485545106234761,
+    "respond_only": 0.9994206257242179
+  }
+}

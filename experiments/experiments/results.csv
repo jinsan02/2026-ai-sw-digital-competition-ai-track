@@ -1,0 +1,3 @@
+experiment_id,model_family,features,split_type,macro_f1,notes,artifact_path
+20260701_165055_gpu_transformer_session,torch_gpu_transformer,serialized prompt/action/workspace text,session,0.738857,exp1: epoch-sweep + improved-bias (baseline loss),
+20260701_174758_gpu_transformer_session,torch_gpu_transformer,serialized prompt/action/workspace text,session,0.744883,exp2: 5epoch + class-balanced focal(gamma2.0),

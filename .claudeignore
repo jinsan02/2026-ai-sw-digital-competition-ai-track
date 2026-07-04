@@ -1,0 +1,39 @@
+# .claudeignore — Claude가 읽지 않을 것 (토큰 최적화, .gitignore 문법)
+
+# 대용량 데이터 / 라벨
+open/data/
+**/data/*.jsonl
+**/data/*.csv
+*.tsv
+
+# 모델 / 가중치 / 로짓 / 캐시
+*.pkl
+*.pt
+*.bin
+*.safetensors
+model/
+model_*/
+submit/model/
+experiments/cache/
+experiments/logits/
+runs/
+
+# 파이썬 환경 / 산출물
+venv/
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# 압축 / 제출물 / 추론 출력
+*.zip
+*.tar.gz
+submissions/
+output/
+
+# 하네스 로그 / IDE / OS
+.claude/logs/
+.DS_Store
+Thumbs.db
+*.swp
+*~

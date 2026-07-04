@@ -1,0 +1,310 @@
+{
+  "experiment_id": "20260702_151840_gpu_transformer_session_current_v1_len192_replay-last1_soup-seed44b-init42",
+  "raw_metrics": {
+    "macro_f1": 0.7405442779832274,
+    "per_class_f1": {
+      "read_file": 0.5939588345362202,
+      "grep_search": 0.6242930245084837,
+      "list_directory": 0.507489786654562,
+      "glob_pattern": 0.6280454791553871,
+      "edit_file": 0.9785042543663234,
+      "write_file": 0.9901960784313726,
+      "apply_patch": 0.9631190727081138,
+      "run_bash": 0.799182422074604,
+      "run_tests": 0.7586206896551724,
+      "lint_or_typecheck": 0.6308571428571429,
+      "ask_user": 0.6510757717492984,
+      "plan_task": 0.669921875,
+      "web_search": 0.5728314238952537,
+      "respond_only": 0.9995240361732508
+    },
+    "prediction_distribution": {
+      "apply_patch": 963,
+      "ask_user": 498,
+      "edit_file": 2221,
+      "glob_pattern": 799,
+      "grep_search": 1766,
+      "lint_or_typecheck": 440,
+      "list_directory": 1321,
+      "plan_task": 496,
+      "read_file": 1874,
+      "respond_only": 1050,
+      "run_bash": 919,
+      "run_tests": 995,
+      "web_search": 352,
+      "write_file": 307
+    },
+    "top_confusions": [
+      [
+        413,
+        "grep_search",
+        "read_file"
+      ],
+      [
+        328,
+        "read_file",
+        "grep_search"
+      ],
+      [
+        316,
+        "read_file",
+        "list_directory"
+      ],
+      [
+        279,
+        "grep_search",
+        "list_directory"
+      ],
+      [
+        174,
+        "glob_pattern",
+        "read_file"
+      ],
+      [
+        168,
+        "run_bash",
+        "run_tests"
+      ],
+      [
+        157,
+        "list_directory",
+        "read_file"
+      ],
+      [
+        154,
+        "glob_pattern",
+        "list_directory"
+      ],
+      [
+        136,
+        "list_directory",
+        "grep_search"
+      ],
+      [
+        134,
+        "glob_pattern",
+        "grep_search"
+      ],
+      [
+        110,
+        "ask_user",
+        "plan_task"
+      ],
+      [
+        106,
+        "plan_task",
+        "ask_user"
+      ],
+      [
+        105,
+        "lint_or_typecheck",
+        "run_tests"
+      ],
+      [
+        103,
+        "ask_user",
+        "web_search"
+      ],
+      [
+        102,
+        "read_file",
+        "glob_pattern"
+      ],
+      [
+        89,
+        "run_tests",
+        "lint_or_typecheck"
+      ],
+      [
+        87,
+        "grep_search",
+        "glob_pattern"
+      ],
+      [
+        81,
+        "run_tests",
+        "run_bash"
+      ],
+      [
+        71,
+        "run_bash",
+        "lint_or_typecheck"
+      ],
+      [
+        69,
+        "plan_task",
+        "web_search"
+      ]
+    ]
+  },
+  "metrics": {
+    "macro_f1": 0.7450770587202039,
+    "per_class_f1": {
+      "read_file": 0.612274368231047,
+      "grep_search": 0.6114885731933292,
+      "list_directory": 0.5135736537605696,
+      "glob_pattern": 0.630843632455669,
+      "edit_file": 0.9798206278026906,
+      "write_file": 0.993485342019544,
+      "apply_patch": 0.9647182727751448,
+      "run_bash": 0.802020202020202,
+      "run_tests": 0.7683557394002068,
+      "lint_or_typecheck": 0.6311881188118812,
+      "ask_user": 0.6702317290552585,
+      "plan_task": 0.6693961105424769,
+      "web_search": 0.5841584158415841,
+      "respond_only": 0.9995240361732508
+    },
+    "prediction_distribution": {
+      "apply_patch": 964,
+      "ask_user": 551,
+      "edit_file": 2215,
+      "glob_pattern": 813,
+      "grep_search": 1291,
+      "lint_or_typecheck": 373,
+      "list_directory": 1365,
+      "plan_task": 449,
+      "read_file": 2288,
+      "respond_only": 1050,
+      "run_bash": 942,
+      "run_tests": 1044,
+      "web_search": 347,
+      "write_file": 309
+    },
+    "top_confusions": [
+      [
+        568,
+        "grep_search",
+        "read_file"
+      ],
+      [
+        328,
+        "read_file",
+        "list_directory"
+      ],
+      [
+        287,
+        "grep_search",
+        "list_directory"
+      ],
+      [
+        223,
+        "glob_pattern",
+        "read_file"
+      ],
+      [
+        205,
+        "list_directory",
+        "read_file"
+      ],
+      [
+        172,
+        "run_bash",
+        "run_tests"
+      ],
+      [
+        161,
+        "glob_pattern",
+        "list_directory"
+      ],
+      [
+        154,
+        "read_file",
+        "grep_search"
+      ],
+      [
+        123,
+        "plan_task",
+        "ask_user"
+      ],
+      [
+        120,
+        "lint_or_typecheck",
+        "run_tests"
+      ],
+      [
+        102,
+        "read_file",
+        "glob_pattern"
+      ],
+      [
+        96,
+        "ask_user",
+        "web_search"
+      ],
+      [
+        93,
+        "grep_search",
+        "glob_pattern"
+      ],
+      [
+        89,
+        "ask_user",
+        "plan_task"
+      ],
+      [
+        82,
+        "run_tests",
+        "run_bash"
+      ],
+      [
+        70,
+        "glob_pattern",
+        "grep_search"
+      ],
+      [
+        69,
+        "plan_task",
+        "web_search"
+      ],
+      [
+        69,
+        "list_directory",
+        "grep_search"
+      ],
+      [
+        60,
+        "run_tests",
+        "lint_or_typecheck"
+      ],
+      [
+        56,
+        "run_bash",
+        "lint_or_typecheck"
+      ]
+    ]
+  },
+  "class_bias": {
+    "read_file": 0.019999999552965164,
+    "grep_search": -0.20000000298023224,
+    "list_directory": 0.20000000298023224,
+    "glob_pattern": -0.019999999552965164,
+    "edit_file": -0.05999999865889549,
+    "write_file": 0.30000001192092896,
+    "apply_patch": 0.019999999552965164,
+    "run_bash": 0.5799999833106995,
+    "run_tests": 0.41999998688697815,
+    "lint_or_typecheck": 0.07999999821186066,
+    "ask_user": 0.25999999046325684,
+    "plan_task": 0.10000000149011612,
+    "web_search": 0.20000000298023224,
+    "respond_only": 0.0
+  },
+  "device": "cuda",
+  "runtime": {
+    "tokenize_sec": 3.5082693489998746,
+    "train_sec": 3457.342208517,
+    "eval_sec": 20.514081390000683,
+    "total_sec": 3539.530084895
+  },
+  "serializer_name": "current_v1",
+  "text_cache_path": "experiments/cache/texts_xlm-roberta-base_current_v1_replay-last1-n10000-w0.5-scope-train_train_n80000_m1782882992878124700_len192.pt",
+  "token_cache_path": "experiments/cache/tokens_xlm-roberta-base_current_v1_replay-last1-n10000-w0.5-scope-train_train_n80000_m1782882992878124700_len192.pt",
+  "val_logits_path": "experiments/logits/20260702_151840_gpu_transformer_session_current_v1_len192_replay-last1_soup-seed44b-init42_val_logits.pt",
+  "validation_rows": 14001,
+  "full_validation_rows": 14001,
+  "fold_id": null,
+  "n_folds": null,
+  "replay_size": 10000,
+  "replay_sample_weight": 0.5
+}

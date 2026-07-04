@@ -49,3 +49,14 @@ teammate_output/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# === 07-04 추가: 커밋 금지 (대용량/무관/로그) ===
+files/
+.claude/logs/
+_pkg*/
+_smoke*/
+**/model_final*/
+**/model_large*/
+**/experiments/cache/
+**/experiments/logits/
+_track2_smoke/*.pt
