@@ -1,0 +1,44 @@
+{
+  "status": "complete_pulled_pending_packaging",
+  "lane": "b",
+  "recipe": "weak4_true_label_action_margin_kd_clean_full_refit",
+  "plan": "colab/action_margin_weak4_refit_lane_b_plan.json",
+  "experiment_id": "20260714_212744_gpu_transformer_session_current_v1_len384_replay-last1_kd_sieve_ca_amw4_t010_k3_refit_s42",
+  "collected_run": "20260714_212753_20260714_212744_gpu_transformer_session_current_v1_len384_re",
+  "seed": 42,
+  "runtime_sec": 3667.8696794469997,
+  "amp_optimizer_steps": {
+    "attempted": 15000,
+    "skipped": 0,
+    "init_scale": 64.0,
+    "final_scale": 64.0,
+    "growth_interval": 1000000
+  },
+  "action_margin_kd": {
+    "label_scope": "weak4",
+    "topk": 3,
+    "target_grad_ratio": 0.1,
+    "calibrated_weight": 0.14356773500845377,
+    "matched_rows_per_epoch": 28782,
+    "mean_unweighted_loss_by_epoch": [
+      0.056913239659373144,
+      0.011377551993382112,
+      0.006513563497477445
+    ]
+  },
+  "model": {
+    "drive_path": "gdrive:AADP_exchange_b/models/kd_sieve_ca_amw4_t010_k3_refit_s42",
+    "local_path": "experiments/incoming/models/kd_sieve_ca_amw4_t010_k3_refit_s42",
+    "artifact_size_mb": 1090.6352424621582,
+    "model_safetensors_sha256": "890d05c3a546e0085df8c33270e5102c34ecae62de01a538fff750d0dbd2331d"
+  },
+  "promotion_evidence": {
+    "matched_control_experiment_id": "20260714_152551_gpu_transformer_session_current_v1_len384_replay-last1_kd_am_pair_control_s42",
+    "fixed_raw_macro_delta": 0.0018512954730036668,
+    "fixed_weak4_macro_delta": 0.008441594166422539,
+    "artifact": "experiments/artifacts/20260715_weak4_am_ckpt_recovery_eval.json"
+  },
+  "metric_note": "The full refit used --final-only; macro_f1=0 in results.csv is a sentinel rather than an evaluation.",
+  "next_action": "Quantize INT8 and replace only model/ in the current mainT ensemble pack; preserve model_b, model_c, routing script, and rules for the first card.",
+  "submission_status": "not_submitted"
+}

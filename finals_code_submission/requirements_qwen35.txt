@@ -1,0 +1,6 @@
+# Qwen3.5 text checkpoints need transformers 5.x for qwen3_5_text seq-cls auto mapping.
+# Use the evaluation server's preinstalled torch; this file is only for package install.
+transformers>=5.13,<5.14
+safetensors==0.8.0
+scikit-learn==1.8.0
+joblib==1.5.3

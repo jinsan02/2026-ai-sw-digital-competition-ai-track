@@ -1,0 +1,5 @@
+# Uses torch from the evaluation server preinstalled packages.
+transformers==4.46.3
+safetensors==0.8.0
+scikit-learn==1.8.0
+joblib==1.5.3

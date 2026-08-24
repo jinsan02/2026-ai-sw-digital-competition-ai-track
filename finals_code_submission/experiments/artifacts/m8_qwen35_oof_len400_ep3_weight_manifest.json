@@ -1,0 +1,67 @@
+{
+  "experiment_id": "m8_qwen35_oof_len400_ep3",
+  "created_utc": "2026-07-05T09:24:04Z",
+  "purpose": "Record Drive checkpoint preservation for the three Qwen3.5 OOF folds.",
+  "storage": {
+    "remote": "gdrive:AADP_exchange/models",
+    "local_full_checkpoints_pulled": false,
+    "local_logits_available": true
+  },
+  "fold_checkpoints": [
+    {
+      "fold": 0,
+      "remote_path": "gdrive:AADP_exchange/models/m8_qwen35_oof_len400_ep3_fold0_ckpt",
+      "modified_drive_time": "2026-07-05 14:20:20",
+      "file_count": 6,
+      "bytes": 1524856893,
+      "required_files": [
+        "chat_template.jinja",
+        "checkpoint_state.json",
+        "config.json",
+        "model.safetensors",
+        "tokenizer.json",
+        "tokenizer_config.json"
+      ]
+    },
+    {
+      "fold": 1,
+      "remote_path": "gdrive:AADP_exchange/models/m8_qwen35_oof_len400_ep3_fold1_ckpt",
+      "modified_drive_time": "2026-07-05 15:42:40",
+      "file_count": 6,
+      "bytes": 1524856893,
+      "required_files": [
+        "chat_template.jinja",
+        "checkpoint_state.json",
+        "config.json",
+        "model.safetensors",
+        "tokenizer.json",
+        "tokenizer_config.json"
+      ]
+    },
+    {
+      "fold": 2,
+      "remote_path": "gdrive:AADP_exchange/models/m8_qwen35_oof_len400_ep3_fold2_ckpt",
+      "modified_drive_time": "2026-07-05 17:06:48",
+      "file_count": 6,
+      "bytes": 1524856893,
+      "required_files": [
+        "chat_template.jinja",
+        "checkpoint_state.json",
+        "config.json",
+        "model.safetensors",
+        "tokenizer.json",
+        "tokenizer_config.json"
+      ]
+    }
+  ],
+  "local_oof_logits": [
+    "experiments/logits/20260705_061219_gpu_transformer_session_oof_current_v1_len400_fold0-of3_replay-last1_m8_qwen35_oof_len400_ep3_fold0_val_logits.pt",
+    "experiments/logits/20260705_073505_gpu_transformer_session_oof_current_v1_len400_fold1-of3_replay-last1_m8_qwen35_oof_len400_ep3_fold1_val_logits.pt",
+    "experiments/logits/20260705_085858_gpu_transformer_session_oof_current_v1_len400_fold2-of3_replay-last1_m8_qwen35_oof_len400_ep3_fold2_val_logits.pt"
+  ],
+  "verification_commands": [
+    "rclone lsd gdrive:AADP_exchange/models | rg 'm8_qwen35_oof_len400_ep3_fold[0-2]_ckpt'",
+    "rclone lsf gdrive:AADP_exchange/models/m8_qwen35_oof_len400_ep3_fold0_ckpt",
+    "rclone size --json gdrive:AADP_exchange/models/m8_qwen35_oof_len400_ep3_fold0_ckpt"
+  ]
+}

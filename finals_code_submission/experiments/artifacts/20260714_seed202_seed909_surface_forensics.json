@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "audit_id": "20260714_seed202_seed909_surface_forensics",
+  "status": "exhausted_exact_surface_unavailable",
+  "question": "Can the exact kd_ens2_s202s909 disagreement/margin surface be recovered for final rule retuning?",
+  "local_forensics": {
+    "submission_zips_checked": 22,
+    "submission_seed_counts": {
+      "42": 12,
+      "unset": 10,
+      "202": 0,
+      "909": 0
+    },
+    "incoming_model_dirs_checked": 55,
+    "incoming_hf_meta_checked": 45,
+    "incoming_seed_counts": {
+      "42": 23,
+      "unset": 22,
+      "202": 0,
+      "909": 0
+    },
+    "logit_files_checked": {
+      "pt": 171,
+      "npz": 8,
+      "pt_load_errors": 0
+    },
+    "pt_payload_seed_counts": {
+      "42": 121,
+      "43": 2,
+      "777": 2,
+      "unset": 46,
+      "202": 0,
+      "909": 0
+    },
+    "roots_and_indexes_checked": [
+      "repository files and text",
+      "Git branches, history, stash, and unreachable objects",
+      "submissions and experiments/incoming/models",
+      "experiments/logits payload metadata",
+      "/home/tomto, /tmp, and /var/tmp",
+      "Windows Downloads, Desktop, Documents, OneDrive, Codex attachments, and Trash",
+      "Chrome download database and local Slack storage",
+      "Colab CLI history and local cloud-sync manifests"
+    ],
+    "nearest_non_exact_assets": [
+      "submissions/kd_sieve_ca_s42.zip (seed42 single INT8 champion)",
+      "experiments/logits/20260713_champ_oof_f{0,1,2}_val_logits.pt (seed42 session OOF)",
+      "/tmp/champ_oof_3fold_logits.zip and /tmp/champ_oof_combined.pt (same seed42 OOF)"
+    ]
+  },
+  "slack_forensics": {
+    "scope": "exact-keyword public search plus accessible private-channel/DM search; read only",
+    "exact_file_search_result": "No seed202, seed909, s202, s909, ens2, or train_features_v1 file attachment was found.",
+    "accessible_attachment": {
+      "file_id": "F0BGSD7J3N1",
+      "title": "champ_oof_3fold_logits.zip",
+      "provenance": "seed42 champion 3-fold OOF only"
+    },
+    "inaccessible_reference": {
+      "file_or_canvas_id": "F0BGV801DD3",
+      "result": "not_visible",
+      "description": "experiment Canvas referenced together with a Wonju-Jinsan DM thread"
+    },
+    "key_messages": [
+      {
+        "permalink": "https://2026aiswai.slack.com/archives/C0BE7C9R2UT/p1783934777442289",
+        "finding": "The reported honest 70k OOF ensemble was seed42 plus seed202: 0.79070 / 0.79007 / 0.79292."
+      },
+      {
+        "permalink": "https://2026aiswai.slack.com/archives/C0BE7C9R2UT/p1783936582969059",
+        "finding": "The deployed package instead used full-refit s202 INT8 plus s909 INT4, raw-margin<1.0 gating, logit averaging, and a 430-second guard."
+      },
+      {
+        "permalink": "https://2026aiswai.slack.com/archives/C0BE7C9R2UT/p1783953268002649",
+        "finding": "R1b was reported as rechecked on two s202 folds, but no component logits, weights, fold files, or commands were attached."
+      }
+    ],
+    "seed909_oof_evidence": "No seed909 or s909 OOF record or attachment exists in the searchable workspace."
+  },
+  "drive_and_colab_forensics": {
+    "google_drive_connector": "Exact filename/content searches returned zero AADP artifact matches; the connector appears to expose a different Drive view than the configured rclone remote.",
+    "rclone_roots_checked": [
+      "gdrive:AADP_exchange",
+      "gdrive:AADP_exchange_b",
+      "gdrive:AADP_exchange_c",
+      "gdrive:AADP_exchange_d",
+      "gdrive:Agent_Action_Decision_Prediction",
+      "gdrive:AADP_notebooks"
+    ],
+    "rclone_result": "Recursive filename/size scans and model/anchor/run listings found seed42 champion OOF and ordinary training artifacts, but no seed202, seed909, s202, s909, or ens2 package/model/logit artifact.",
+    "live_lane_handling": "Lanes A and B were active with unrelated terminal-token experiments and were inspected read-only without interrupting or mutating them.",
+    "external_team_surface": "The ensemble package and seed909 instance were produced on team-side infrastructure outside the accessible exchanges."
+  },
+  "provenance_mismatch": {
+    "honest_oof_pair": "seed42 plus seed202",
+    "deployed_full_refit_pair": "seed202 plus seed909",
+    "consequence": "Even recovering the reported seed42+seed202 OOF would not be the exact deployed disagreement/margin surface. No honest seed202+seed909 OOF is reported to have existed."
+  },
+  "minimum_materials_for_exact_recovery": [
+    "kd_ens2_s202s909 or kd_ens2_s202s909_r1b original zip",
+    "seed202 INT8 and seed909 INT4 model directories with hf_meta and exact script.py",
+    "or both ID-aligned component OOF logits with fold metadata and the exact ensemble operation order"
+  ],
+  "decision": {
+    "exact_reconstruction": "not_possible_from_accessible_state",
+    "new_training_is_not_forensic_recovery": "A fresh seed202/909 run would not guarantee the same trained instances or quantization error and would not recreate the historical package surface.",
+    "remaining_rule_search": "No further practical row-local, label-free rule family remains unsearched; the only residual uncertainty is inaccessible/nonexistent exact-instance surface validation.",
+    "deployment_implication": "Keep read_file -0.14 rejected as universal. Rank conservative sequence H first; preserve immutable-base, non-cascading semantics for all rules."
+  }
+}

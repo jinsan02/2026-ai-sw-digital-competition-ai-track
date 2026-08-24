@@ -1,0 +1,47 @@
+{
+  "a": {
+    "session": "aadp-a",
+    "state_file": ".colab/lane-a.json",
+    "exchange": "AADP_exchange",
+    "gpu": "A100",
+    "packages": [
+      "transformers==4.46.3",
+      "sentencepiece",
+      "safetensors"
+    ]
+  },
+  "b": {
+    "session": "aadp-b",
+    "state_file": ".colab/lane-b.json",
+    "exchange": "AADP_exchange_b",
+    "gpu": "L4",
+    "packages": [
+      "transformers==4.46.3",
+      "sentencepiece",
+      "safetensors"
+    ]
+  },
+  "c": {
+    "session": "aadp-c",
+    "state_file": ".colab/lane-c.json",
+    "exchange": "AADP_exchange_c",
+    "gpu": "G4",
+    "packages": [
+      "transformers==4.46.3",
+      "sentencepiece",
+      "safetensors==0.8.0",
+      "bitsandbytes"
+    ]
+  },
+  "d": {
+    "session": "aadp-d",
+    "state_file": ".colab/lane-d.json",
+    "exchange": "AADP_exchange_d",
+    "gpu": "T4",
+    "packages": [
+      "transformers==4.46.3",
+      "sentencepiece",
+      "safetensors"
+    ]
+  }
+}

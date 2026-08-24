@@ -1,0 +1,27 @@
+{
+ "ckpt": "/home/tomto/projects/Agent_Action_Decision_Prediction/experiments/incoming/models/kd_am_weak4_t010_k3_screen_s42_ckpt",
+ "val_rows": 14001,
+ "eval_elapsed_s": 114.7,
+ "raw_macro_f1": 0.7853020042383985,
+ "raw_weak4_macro_f1": 0.612347238600702,
+ "delta_macro_vs_control": 0.0018512954730036668,
+ "delta_weak4_vs_control": 0.008441594166422539,
+ "framework_metrics_macro": 0.7853020042383984,
+ "per_class": {
+  "read_file": 0.62303,
+  "grep_search": 0.64315,
+  "list_directory": 0.52321,
+  "glob_pattern": 0.66,
+  "edit_file": 0.98746,
+  "write_file": 0.99836,
+  "apply_patch": 0.97525,
+  "run_bash": 0.84869,
+  "run_tests": 0.84398,
+  "lint_or_typecheck": 0.71221,
+  "ask_user": 0.67555,
+  "plan_task": 0.72502,
+  "web_search": 0.77927,
+  "respond_only": 0.99905
+ },
+ "note": "diagnostic only: epoch-3 checkpoint of a fail-closed run (8 AMP skips); promotion needs a clean rerun"
+}

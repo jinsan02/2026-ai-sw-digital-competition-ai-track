@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "completed_at": "2026-07-16T05:34:27+09:00",
+  "operation": "restore final submitted ensemble packages from verified Drive materials",
+  "status": "payload_exact_container_timestamp_reconstructed",
+  "packages": [
+    {
+      "path": "submissions/rfinal_amw4_7070m10.zip",
+      "bytes": 1002966933,
+      "entries": 24,
+      "original_sha256": "47e50cef6f9682baa889d8bf3fbe007d58c9e8108ceae0fdbbda5ec5199715f3",
+      "restored_sha256": "6aae25f3aaf9e55a24a83428232e025c49973e1e98fe114dc9831f9691419303",
+      "model_sha256": "04ce9ddf6819b39170abbe3007334fe2058317c4a72e3fcb6cb211bac28baea5",
+      "model_b_sha256": "95f3762a8dc094747f09d40f97f0fb343f857dd4bb8464e9e14819fbebf62dd5",
+      "model_c_sha256": "46183f02ae00b446f4cac8233258fd9e03314d987bc0193409290758e44f235f"
+    },
+    {
+      "path": "submissions/rfinal_amhyb_m10.zip",
+      "bytes": 1005612893,
+      "entries": 30,
+      "original_sha256": "72b608d4d92fc34abd1650795a9ce3c6be5b1132f7cc8c40137490149a06a0fc",
+      "restored_sha256": "855a288049db0c92b395349c2a13fcb471e9b9cba1a37edd17b5e0cb871721a3",
+      "model_sha256": "04ce9ddf6819b39170abbe3007334fe2058317c4a72e3fcb6cb211bac28baea5",
+      "model_b_sha256": "95f3762a8dc094747f09d40f97f0fb343f857dd4bb8464e9e14819fbebf62dd5",
+      "model_c_sha256": "9dccb1a17a45bfc94e9957c5d01aaaffa354db4e8f0091ec3a65a1bf5b4bff02"
+    }
+  ],
+  "common_payload": {
+    "script_sha256": "ea2225dd301f016a8504d2f057771f197817981e129ae075e19090ff61bf1463",
+    "requirements_sha256": "4ddce96073e2030323907856d0191288ea6fadaf10c769915cb3c97c1d51278b",
+    "main_hf_meta_sha256": "958c04fbfa32f1ef057b3f7fa88be45319aa9aa5c0dbac2842d1ab2ed290adf7",
+    "routing_threshold": 1.0
+  },
+  "drive_sources": {
+    "am_seed7070_fp16": {
+      "path": "gdrive:AADP_exchange/models/kd_sieve_ca_amw4_t010_k3_refit_s7070",
+      "file_id": "1OYCDHA9q0N8DYKK5HI1EQrpjQ6rGGZ1i",
+      "sha256": "e3f540aff2f3689cf32eb9d9c79a0cadfd2b5bd20f492eb30241798a8cdf9b95"
+    },
+    "am_seed42_fp16": {
+      "path": "gdrive:AADP_exchange_b/models/kd_sieve_ca_amw4_t010_k3_refit_s42",
+      "file_id": "11_goCvxHNgT6pT7E5S3mL3nwBKFWC8QZ",
+      "sha256": "890d05c3a546e0085df8c33270e5102c34ecae62de01a538fff750d0dbd2331d"
+    },
+    "historical_members": {
+      "path": "gdrive:AADP_exchange_c/assets/trio_teacher_pack",
+      "folder_id": "1ptp08GFbS_dNdOtNGDjAGcmyjGwgmAuW"
+    }
+  },
+  "container_note": "The original ZIPs were deleted and were not present in active Drive or Drive trash. Every submitted payload file, entry order, Unix mode, compression size, archive byte size, and recorded internal SHA-256 was reconstructed exactly. The whole-ZIP SHA-256 differs because the audit retained only minute-resolution member times, not the original ZIP members' DOS timestamp seconds.",
+  "validation": {
+    "zip_crc": "pass",
+    "entry_counts": "pass",
+    "archive_byte_sizes": "exact_match",
+    "recorded_internal_hashes": "exact_match",
+    "script_ast": "pass"
+  }
+}

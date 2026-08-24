@@ -1,0 +1,104 @@
+{
+  "status": "invalid_run_diagnostic_positive_promoted_to_clean_refit",
+  "lane": "a",
+  "required_gpu": "A100",
+  "plan": "colab/action_margin_weak4_lane_a_plan.json",
+  "in_flight": {
+    "bundle": "code_20260714_171129_6a49a121_dirty.tar.gz",
+    "git_commit": "6a49a121a085f8611cb16b889f47cc1915362958",
+    "launched_utc": "2026-07-14T17:16:36Z",
+    "remote_pid": 48816,
+    "verified": "Drive heartbeat reported the detached trainer alive with 96% A100 utilization; lane A was reattached to the same recorded endpoint after a transient CLI-only prune, and the locked local StateStore plus replacement keep-alive process were verified without allocating a VM.",
+    "release_policy": "Do not release lane A after completion. Require successful auto-collect and release_safe=true, then pull/compare while preserving the assignment, Drive mount, daemon, and keep-alive."
+  },
+  "hypothesis": "The all-class action-margin objective contains useful Weak4 boundary information, but its non-Weak4 gradients cause the observed ask_user/plan_task loss. Restricting only the auxiliary to true-label Weak4 rows should retain the exploration gain without changing ordinary KD elsewhere.",
+  "matched_control": {
+    "experiment_id": "20260714_152551_gpu_transformer_session_current_v1_len384_replay-last1_kd_am_pair_control_s42",
+    "raw_macro_f1": 0.7834507087653948,
+    "raw_weak4_macro_f1": 0.6039056444342794
+  },
+  "evidence": {
+    "all_class_action_margin_raw_delta": -0.0006792995202861,
+    "all_class_action_margin_weak4_delta": 0.0046927150938036,
+    "non_weak4_macro_contribution": -0.0020200757522401,
+    "fixed_control_top1_weak_centered_blend_delta": 0.001203731,
+    "fixed_control_top1_weak_centered_blend_pseudo_session_signs": [
+      0.000274,
+      0.002191,
+      0.001131
+    ]
+  },
+  "single_quality_variable": "Set action-margin true-label scope from all teacher-covered original rows to Weak4 teacher-covered original rows.",
+  "invariants": {
+    "ordinary_kd": "Unchanged alpha=0.5, T=3 on every previously teacher-covered original row.",
+    "margin_candidates": "Detached M8 teacher top-3 negatives over all 13 non-true classes, unchanged.",
+    "margin_strength": "Deterministically recalibrate to the same target logit-gradient ratio 0.10 after applying the Weak4 scope.",
+    "replay": "Legacy last1 cap=10000 weight=0.5; replay remains excluded from action-margin KD.",
+    "expected_active_margin_rows_per_epoch": 23038,
+    "seed_split_serializer": "seed42 fixed session split, current_v1 length384, identical to the paired control.",
+    "amp_skips": 0
+  },
+  "decision_gate": {
+    "raw_macro_delta_min": 0.0007,
+    "raw_weak4_delta_min": 0.0025,
+    "ask_user_plan_task": "No recurrence of the all-class collapse.",
+    "required_classes": "No material collapse in web_search, lint_or_typecheck, run_tests, or run_bash."
+  },
+  "promotion": "If the one-arm screen passes, apply the same scope to the reconstructed seed202 sieve x conditional-alpha recipe. Do not combine it with B-fast in the first refit.",
+  "tests": [
+    ".venv/bin/python -m unittest tests.test_action_margin_kd -v",
+    ".venv/bin/python -m unittest tests.test_trusted_replay_kd tests.test_consensus_kd_sieve -v"
+  ],
+  "launch_command": ".venv/bin/python colab/aadp_colab.py launch a colab/run_plan_remote.py -- --plan colab/action_margin_weak4_lane_a_plan.json",
+  "release_policy": "Never release lane A after completion; preserve the session, Drive mount, daemon, and keep-alive until the user explicitly says otherwise.",
+  "postmortem": {
+    "runner_launch_utc": "2026-07-14T17:16:36Z",
+    "runner_pid": 48816,
+    "runner_interruption_utc": "2026-07-14T17:57:35Z",
+    "runner_interruption": "The plan parent was explicitly terminated while the child trainer survived as an orphan and continued through epoch 3.",
+    "checkpoint": {
+      "path": "gdrive:AADP_exchange/models/kd_am_weak4_t010_k3_screen_s42_ckpt",
+      "last_completed_epoch": 3,
+      "label_scope": "weak4",
+      "calibrated_weight": 0.2619077031324094,
+      "matched_rows_per_epoch": 23038
+    },
+    "terminal_failure": {
+      "amp_optimizer_steps_attempted": 12375,
+      "amp_optimizer_steps_skipped": 8,
+      "exception": "FloatingPointError: AMP skipped-step audit failed",
+      "plan_bug": "The plan required zero AMP skips but omitted the stabilized --amp-init-scale 64 and --amp-growth-interval 1000000 flags, leaving defaults 65536 and 2000."
+    },
+    "missing_outputs": [
+      "validation metrics",
+      "validation logits",
+      "final fp16 model",
+      "experiments/results.csv row",
+      "auto-collect result"
+    ],
+    "control_plane_diagnosis": {
+      "confirmed": "Some intended lane-C manual commands used AADP_EXCHANGE instead of the supported AADP_EXCHANGE_DIR variable. cloud_sync.py therefore used its default AADP_exchange queue and acted on lane A.",
+      "not_confirmed": "A later exhaustive /proc environment scan found no lane-A daemon reading AADP_exchange_c. No duplicate exchange_c daemon was killed.",
+      "lane_isolation_check": "Lane A had only daemon PID 1150 on AADP_exchange; lane C had its own daemon PID 1573 on AADP_exchange_c and was idle at 0% GPU / 6 MiB.",
+      "drive_queue_check": "The actual AADP_exchange_c/cmd/done directory had no command newer than 2026-07-14T15:52Z. The later s909 refusal was therefore returned through the default A queue, not claimed from the C queue."
+    },
+    "seed777_collision": {
+      "observed_trainers": [60035, 63117],
+      "same_recipe": "Both were seed777 trio-teacher trainers with identical arguments.",
+      "same_destinations": true,
+      "intervention": "After explicit user authorization, orphan PID 60035 was identity-checked and SIGKILLed at 2026-07-14T18:37:20Z. Tracked trainer PID 63117 remained alive; GPU memory returned from about 23.4 GiB to 11.7 GiB.",
+      "artifact_warning": "Treat any seed777 output as collision-exposed until checkpoint/output provenance and file integrity are independently verified."
+    },
+    "recovery_eval": {
+      "artifact": "experiments/artifacts/20260715_weak4_am_ckpt_recovery_eval.json",
+      "validation_rows": 14001,
+      "elapsed_sec": 114.7,
+      "raw_macro_f1": 0.7853020042383985,
+      "raw_macro_delta_vs_control": 0.0018512954730036668,
+      "raw_weak4_macro_f1": 0.612347238600702,
+      "raw_weak4_delta_vs_control": 0.008441594166422539,
+      "checkpoint_integrity": "219 tensors, zero non-finite values; epoch-3 state and calibrated action-margin metadata matched the run contract"
+    },
+    "decision": "The interrupted run remains invalid for direct packaging, but its intact epoch-3 checkpoint produced a positive recovered fixed-session evaluation above both preregistered gates. Promote the hypothesis directly to a clean stabilized full refit; do not spend another A100 run on a duplicate diagnostic evaluation."
+  }
+}

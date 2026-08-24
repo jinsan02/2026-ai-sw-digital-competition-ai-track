@@ -1,0 +1,36 @@
+{
+  "experiment_id": "20260705_183536_gpu_transformer_session_current_v1_len400_replay-last1_m8_qwen35_refit",
+  "metrics_source": "",
+  "source_metrics": {
+    "macro_f1": 0.0
+  },
+  "class_bias": {
+    "read_file": 0.0,
+    "grep_search": 0.0,
+    "list_directory": 0.0,
+    "glob_pattern": 0.0,
+    "edit_file": 0.0,
+    "write_file": 0.0,
+    "apply_patch": 0.0,
+    "run_bash": 0.0,
+    "run_tests": 0.0,
+    "lint_or_typecheck": 0.0,
+    "ask_user": 0.0,
+    "plan_task": 0.0,
+    "web_search": 0.0,
+    "respond_only": 0.0
+  },
+  "device": "cuda",
+  "runtime": {
+    "tokenize_sec": 3.588625815999876,
+    "train_sec": 29349.544520765,
+    "eval_sec": 0.0,
+    "total_sec": 29368.186508692
+  },
+  "serializer_name": "current_v1",
+  "text_cache_path": "experiments/cache/texts_igorktech-Qwen3.5-0.8B-Base-LM_current_v1_replay-last1-n10000-w0.5-scope-final_train_n80000_m1780935092000000000_len400.pt",
+  "token_cache_path": "experiments/cache/tokens_igorktech-Qwen3.5-0.8B-Base-LM_current_v1_replay-last1-n10000-w0.5-scope-final_train_n80000_m1780935092000000000_len400.pt",
+  "replay_size": 10000,
+  "artifact_size_mb": 1454.217487335205,
+  "rule_boosts_path": ""
+}

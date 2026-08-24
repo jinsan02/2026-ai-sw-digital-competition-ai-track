@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "received_date": "2026-07-14",
+  "source": "teammate handoff",
+  "assets": [
+    {
+      "path": "submissions/kd_ens3_trio_rfinal.zip",
+      "role": "current_team_public_champion_exact_received_archive",
+      "public_macro_f1": 0.7963584846,
+      "bytes": 1005620217,
+      "sha256": "df3392ea80f5cd03b94f0d69671293585b53a30c7281a4fa62b2ed1d597b402b",
+      "zip_entries": 18,
+      "zip_roots": [
+        "model",
+        "model_b",
+        "model_c",
+        "requirements.txt",
+        "script.py"
+      ],
+      "script_sha256": "13bd5bb82425fafb5dd2eb14f3e3118015be291fe68636273880622c23e6226f",
+      "members": [
+        {
+          "path": "model/hf_model/model.int8.safetensors",
+          "reported_role": "seed202_main",
+          "sha256": "71ba89525023fd9b8582b4f458302c05700ac4c228940dce696388d21d6fac46"
+        },
+        {
+          "path": "model_b/hf_model/model.int4.safetensors",
+          "reported_role": "seed909_auxiliary",
+          "sha256": "95f3762a8dc094747f09d40f97f0fb343f857dd4bb8464e9e14819fbebf62dd5"
+        },
+        {
+          "path": "model_c/hf_model/model.int4.safetensors",
+          "reported_role": "seed7070_auxiliary",
+          "sha256": "46183f02ae00b446f4cac8233258fd9e03314d987bc0193409290758e44f235f"
+        }
+      ],
+      "validation": {
+        "zip_crc": "pass",
+        "script_compile": "pass",
+        "full_offline_smoke_in_this_handoff": "not_run"
+      }
+    },
+    {
+      "path": "submissions/kd_ens2_s202s909_r1b.zip",
+      "role": "previous_team_public_champion_exact_received_archive",
+      "public_macro_f1": 0.79546,
+      "bytes": 871402977,
+      "sha256": "aaacb3aa780e44e3c36382400824a8bc81a08aa2ce93a6fe7f5ea2bd882fd311",
+      "zip_entries": 15,
+      "zip_roots": [
+        "model",
+        "model_b",
+        "requirements.txt",
+        "script.py"
+      ],
+      "script_sha256": "a80859e4d94b31ba817fd5736f9be9e5847d3dd32f6e2147055427978e3cef31",
+      "members": [
+        {
+          "path": "model/hf_model/model.int8.safetensors",
+          "reported_role": "seed202_main",
+          "sha256": "71ba89525023fd9b8582b4f458302c05700ac4c228940dce696388d21d6fac46"
+        },
+        {
+          "path": "model_b/hf_model/model.int4.safetensors",
+          "reported_role": "seed909_auxiliary",
+          "sha256": "95f3762a8dc094747f09d40f97f0fb343f857dd4bb8464e9e14819fbebf62dd5"
+        }
+      ],
+      "validation": {
+        "zip_crc": "pass",
+        "script_compile": "pass",
+        "full_offline_smoke_in_this_handoff": "not_run"
+      }
+    },
+    {
+      "path": "experiments/logits/s202_f1.pt",
+      "role": "seed202_session_oof_fold",
+      "fold_id": 1,
+      "n_folds": 3,
+      "rows": 23332,
+      "logits_shape": [
+        23332,
+        14
+      ],
+      "logits_dtype": "torch.float32",
+      "raw_macro_f1": 0.7833894133774161,
+      "bytes": 2400976,
+      "sha256": "46dac70e8a8930a637a8fa861a45415c9e628a27cf61dd60365f1a5fadaa625c",
+      "validation": {
+        "finite_logits": "pass",
+        "unique_indices": "pass",
+        "train_id_alignment": "pass",
+        "train_label_alignment": "pass"
+      }
+    },
+    {
+      "path": "experiments/logits/s202_f2.pt",
+      "role": "seed202_session_oof_fold",
+      "fold_id": 2,
+      "n_folds": 3,
+      "rows": 23334,
+      "logits_shape": [
+        23334,
+        14
+      ],
+      "logits_dtype": "torch.float32",
+      "raw_macro_f1": 0.7962254586467469,
+      "bytes": 2401104,
+      "sha256": "e78029d7046750b3a541eb23cb687e2eb1bb23a0f1b98f96cd20b64b3d6e50c8",
+      "validation": {
+        "finite_logits": "pass",
+        "unique_indices": "pass",
+        "train_id_alignment": "pass",
+        "train_label_alignment": "pass"
+      }
+    }
+  ],
+  "oof_common": {
+    "base_model": "naver-hyperclovax/HyperCLOVAX-SEED-Text-Instruct-0.5B",
+    "seed": 202,
+    "split": "session_oof",
+    "serializer_name": "current_v1",
+    "max_length": 384,
+    "classes": [
+      "read_file",
+      "grep_search",
+      "list_directory",
+      "glob_pattern",
+      "edit_file",
+      "write_file",
+      "apply_patch",
+      "run_bash",
+      "run_tests",
+      "lint_or_typecheck",
+      "ask_user",
+      "plan_task",
+      "web_search",
+      "respond_only"
+    ],
+    "folds_1_2_disjoint": true,
+    "covered_rows": 46666,
+    "missing_fold": 0,
+    "missing_rows": 23334
+  },
+  "limitations": [
+    "The handoff contains seed202 OOF folds 1 and 2 only; it is not a complete three-fold seed202 OOF surface.",
+    "No aligned seed909 or seed7070 OOF logits were received, so the exact deployed ensemble cannot be reconstructed in OOF.",
+    "Exact training commands for the three deployed refits were not received.",
+    "The binary assets are intentionally gitignored; this tracked manifest is their repository index.",
+    "The received ensemble archives contain model_b and model_c roots required by their scripts; they are preserved byte-for-byte and were not rebuilt with the standard single-model packager."
+  ]
+}

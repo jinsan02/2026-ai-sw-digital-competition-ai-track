@@ -1,0 +1,34 @@
+{
+ "surface": "weak4-AM epoch-3 ckpt, seed42 fixed val (14001 rows)",
+ "raw_macro": 0.7853020042383985,
+ "askboost_plus_10rules_macro": 0.7881685904933179,
+ "askboost_plus_10rules_delta": 0.002866586254919423,
+ "R1i": {
+  "delta": 0.000283183074224036,
+  "touched": 12,
+  "rescue_harm": [
+   7,
+   5
+  ]
+ },
+ "seq_exec": {
+  "delta": -1.7471592205220432e-06,
+  "touched": 2,
+  "rescue_harm": [
+   1,
+   1
+  ]
+ },
+ "full_stack_delta_vs_pipeline": 0.0002816322600659449,
+ "full_stack_macro": 0.7884502227533838,
+ "routing_fraction": {
+  "margin_lt_1.0": 0.34076137418755803,
+  "margin_lt_1.25": 0.3973287622312692,
+  "margin_lt_1.5": 0.491536318834369
+ },
+ "reference": {
+  "s202_routing_lt_1.25": 0.319,
+  "s202_routing_lt_1.0": 0.244,
+  "control_rules_delta_band": "+0.00166/+0.00289 (team audit, s202 folds)"
+ }
+}
