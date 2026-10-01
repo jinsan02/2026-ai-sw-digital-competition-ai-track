@@ -63,11 +63,11 @@ _track2_smoke/*.pt
 
 # === 로컬 전용 대용량/팀원 폴더 ===
 archive_onedrive_0717/
-junhyun_repo/
+member_a_repo/
 finals_code_submission_v2_backup/
 
 # === 08-24 추가: 임시 아카이브·중간 드래프트 (로컬 보관) ===
 finals/desktop_archive_0719/
 finals/preserved_packs/
-finals/taeyeon/태연_시안_*.pdf
-finals/taeyeon/태연_1장시안_*
+finals/팀원C/팀원C_시안_*.pdf
+finals/팀원C/팀원C_1장시안_*

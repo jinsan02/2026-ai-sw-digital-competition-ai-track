@@ -1,6 +1,6 @@
-# 원주 파트 — EDA 3장면 + 절단감사 요약 + Canvas 그림 후보 (07-15)
+# 팀원 B 파트 — EDA 3장면 + 절단감사 요약 + Canvas 그림 후보 (07-15)
 
-> 진산님 `07_팀원_요청사항.md` 원주 항목 1~3 대응. 그림 3장은 이 폴더의 PNG (champ_oof 3폴드 + train.jsonl 70k 실측, 발표용 200dpi).
+> 진산님 `07_팀원_요청사항.md` 팀원 B 항목 1~3 대응. 그림 3장은 이 폴더의 PNG (champ_oof 3폴드 + train.jsonl 70k 실측, 발표용 200dpi).
 
 ## 장면 ① 클래스 분포/불균형 — Weak4 문제 소개 (`fig1_class_distribution.png`)
 

@@ -36,14 +36,14 @@ grad-accum/per-epoch-eval/checkpoints는 로컬 train_transformer.py 커스텀 �
 
 ### P1 — state_v2 × len384 (최우선 업사이드, 로컬 밤런)
 - 탐색 혼동을 **직접 타격**: state_v2는 최신 user/action/result/args를 앞에 배치 → read/grep/list/glob 결정 정보 보존
-- 과거 state_v2 실패는 "길이 무용"이 아니라 "직렬화가 메타 버린 채 늘린 혼입 실험"이었음(임준현 재해석). 아무도 안 돌린 조합 = "정보 더 담기 × 충분한 길이"
+- 과거 state_v2 실패는 "길이 무용"이 아니라 "직렬화가 메타 버린 채 늘린 혼입 실험"이었음(팀원 A 재해석). 아무도 안 돌린 조합 = "정보 더 담기 × 충분한 길이"
 - 명령: `--serializer state_v2 --max-length 384` (나머지 focal 레시피 동일). 토큰 분포 보고 len512도 후보
 - 판정: OOF 나오기 전엔 fixed로 방향만, 승격은 OOF로
 
 ### P2 — large len384 3-fold OOF (Colab A100, 팀 분업)
 - fixed-val이 신뢰 불가로 판명 → 다음 레버 승격 판단에 OOF 필수
 - 로컬 16h 대신 Colab 몇 시간. OOF 로짓 생기면 rules/bias/SVC-weight를 정식 재튜닝(현재 fixed 근사 대체)
-- 조율: 임준현님께 의뢰 + 진산님 3세션 script.py(SVC 추론) 공유(이미 2회 요청받음)
+- 조율: 팀원 A님께 의뢰 + 진산님 3세션 script.py(SVC 추론) 공유(이미 2회 요청받음)
 
 ### P3 — 이종 인코더 다양성 (예산 제약 하에서만)
 - kf-deberta-base(ask_user에서 large보다 강함 — 한국어 프롬프트 신호) 또는 mBERT를 int8 동봉(zip 여유 ~470MB)

@@ -30,7 +30,7 @@
 | **제출 전략** | 하루 10슬롯 배분, 승격 규칙, 최종 제출본 선택 |
 
 팀장 본인 확인에 따라 직접 구현 범위에는 **최종 추론 파이프라인**, 인코더·초기 제출·기각
-실험 축, 학습/패키징 보조 코드, int4 코덱 확장과 최종 적용이 포함된다. 단, 준현이 주도한
+실험 축, 학습/패키징 보조 코드, int4 코덱 확장과 최종 적용이 포함된다. 단, 팀원 A가 주도한
 Consensus Sieve와 Colab 레인은 팀장 관할과 직접 구현을 구분한다.
 
 ---
@@ -59,7 +59,7 @@ Consensus Sieve와 Colab 레인은 팀장 관할과 직접 구현을 구분한�
 ### A-4. 제출물 실물 검증
 `finals/12_잔여항목_체크리스트.md` #9:
 
-> "준현 Drive 공유폴더 검토 | 진산 | ✅ 다운로드 완료 — rfinal_amhyb_m10.zip 실물 (1,005,612,893B 정확일치·CRC OK·루트 5항목·leak/sparse 없음·script 3063행 `<1.0` = 순정 **직접검증 완료**)"
+> "팀원 A Drive 공유폴더 검토 | 진산 | ✅ 다운로드 완료 — rfinal_amhyb_m10.zip 실물 (1,005,612,893B 정확일치·CRC OK·루트 5항목·leak/sparse 없음·script 3063행 `<1.0` = 순정 **직접검증 완료**)"
 
 → 최종 제출팩의 무결성·순정 여부를 본인이 바이트 단위로 직접 검증했다. 코드 검증 심사 대비의 핵심 근거다.
 
@@ -70,9 +70,9 @@ Consensus Sieve와 Colab 레인은 팀장 관할과 직접 구현을 구분한�
 
 | 경로/영역 | 본인 역할 | 공동/팀원 역할 |
 |---|---|---|
-| `finals_code_submission/train_transformer.py` | 공동 구현 | 임준현과 공동 |
+| `finals_code_submission/train_transformer.py` | 공동 구현 | 팀원 A와 공동 |
 | `finals_code_submission/script.py`, `pack/script.py` | 초기 구조 작성부터 최종 파이프라인 완성까지 주도 | 일부 팀 산출물 통합 |
-| `finals_code_submission/quantize_int4.py` | int8 코덱을 int4로 확장하고 최종 제출팩에 적용 | int8 초안은 임준현 |
+| `finals_code_submission/quantize_int4.py` | int8 코덱을 int4로 확장하고 최종 제출팩에 적용 | int8 초안은 팀원 A |
 | `export_teacher_logits.py`, `package_submission.py`, `train.py` | 본인 서버에서 작성·실행·통합 | 별도 담당자 없음으로 본인 확인 |
 | `pipeline_xlmr/*`, `submit/*`, `experiments/*`, `_track2_smoke/*` | 직접 구현·실험 | — |
 | `experiments/artifacts/*.json` | 본인 서버에서 실험 실행·산출물 생성 | — |
@@ -85,7 +85,7 @@ Consensus Sieve와 Colab 레인은 팀장 관할과 직접 구현을 구분한�
 | 결정 | 근거 위치 | 내용 |
 |---|---|---|
 | **최종 제출본 선택** | `finals/00_README_본선준비.md:4` | "Dacon 최종 선택본 = `rfinal_amhyb_m10.zip` (07-15 **진산 확정**, 추론 7:15) — 동점팩 amw4_7070m10(7:23)은 미선택". 소수 10자리 동점에서 **더 빠른 팩**을 골라 본선 속도 배점(10%)에 유리하게 귀속 |
-| **승격 방법론 전환** | `finals/ref_슬랙로그_태연백업.md:394` | "② 방법론 변화 — **Public-gated 프로모션으로 전환** … 퀵스크린(선택)→fixed 풀런+가중치저장→**Public이 결정**(하루 10회 예산, 0.002 미만은 노이즈)→우승작 전체 refit. **OOF는 게이트가 아니라 앙상블/bias-rule 튜닝용 도구로 강등**" — 본인이 팀에 공지한 방법론 변경 |
+| **승격 방법론 전환** | `finals/ref_슬랙로그_팀원 C백업.md:394` | "② 방법론 변화 — **Public-gated 프로모션으로 전환** … 퀵스크린(선택)→fixed 풀런+가중치저장→**Public이 결정**(하루 10회 예산, 0.002 미만은 노이즈)→우승작 전체 refit. **OOF는 게이트가 아니라 앙상블/bias-rule 튜닝용 도구로 강등**" — 본인이 팀에 공지한 방법론 변경 |
 | **노이즈 임계 규칙** | 위 + `finals/13_QnA_통합본.md:49` | "단일 Public 델타 <0.002는 증거로 취급하지 않는 노이즈 독트린" |
 | **판정 프로토콜 5원칙** | `finals/03` §1 | 단일변수 / 내부 스크린 우선 / 한 fold라도 음성이면 기각 / 배포 표면 재검증 / KD는 매치드시드 Public 전용 |
 | **기각 축 판정 12개** | `finals/03` §2 | 인코더 라인 · 이질 멤버 · 동계열 교사 · 거대 교사 · replay 조밀화 · TTA · 시드 리롤 등 |
@@ -101,23 +101,23 @@ Consensus Sieve와 Colab 레인은 팀장 관할과 직접 구현을 구분한�
 
 | 경로 | 담당 | 근거 |
 |---|---|---|
-| `finals/junhyun/finals_amw4_handoff.md` | **임준현** | 경로명 + `finals/01` — "준현 명세 확정 (07-16, `junhyun/finals_amw4_handoff.md`)" |
-| `finals/junhyun/finals_presentation_material.md` | **임준현** | 〃 |
-| `finals/junhyun/weak4_문제정리.md` | **임준현** | 〃 |
-| `finals/08_원주_EDA문안.md`, `finals/assets/EDA_원주_초안.md` | **노진산·목원주 공동 데이터 분석** | 저장소에는 원주 회신/초안으로 남아 있고, 팀장 확인상 분석은 공동 수행 |
-| `dataset_profile_*.png` 등 데이터 분석 시각화 | **노진산·목원주 공동** | 팀장 확인. 파일별 세부 편집자는 저장소만으로 더 분리하지 않음 |
-| `finals/taeyeon/*` (18개) | **김태연 산출물 보존** | 태연 회신과 발표 초안 아카이브 |
-| `make_pres_figures.py`, `fig1~fig3*.png`, 최종 PPTX/PDF | **노진산·김태연 공동** | 팀장 확인상 발표자료·그림은 공동 제작. 태연은 PPTX 편집 오너였으나 단독 제작은 아님 |
+| `finals/팀원A/finals_amw4_handoff.md` | **팀원 A** | 경로명 + `finals/01` — "팀원 A 명세 확정 (07-16, `member_a/finals_amw4_handoff.md`)" |
+| `finals/팀원A/finals_presentation_material.md` | **팀원 A** | 〃 |
+| `finals/팀원A/weak4_문제정리.md` | **팀원 A** | 〃 |
+| `finals/08_팀원B_EDA문안.md`, `finals/assets/EDA_팀원B_초안.md` | **노진산·팀원 B 공동 데이터 분석** | 저장소에는 팀원 B 회신/초안으로 남아 있고, 팀장 확인상 분석은 공동 수행 |
+| `dataset_profile_*.png` 등 데이터 분석 시각화 | **노진산·팀원 B 공동** | 팀장 확인. 파일별 세부 편집자는 저장소만으로 더 분리하지 않음 |
+| `finals/팀원C/*` (18개) | **팀원 C 산출물 보존** | 팀원 C 회신과 발표 초안 아카이브 |
+| `make_pres_figures.py`, `fig1~fig3*.png`, 최종 PPTX/PDF | **노진산·팀원 C 공동** | 팀장 확인상 발표자료·그림은 공동 제작. 팀원 C는 PPTX 편집 오너였으나 단독 제작은 아님 |
 
 ### C-1. 양자화 코덱의 정확한 분업
 
-`quantize_checkpoint.py`의 int8 초안은 **임준현**, `quantize_int4.py`의 int4 확장과 최종
+`quantize_checkpoint.py`의 int8 초안은 **팀원 A**, `quantize_int4.py`의 int4 확장과 최종
 제출팩 적용은 **노진산** 담당으로 확인됐다. 저장소 정황도 int8이 팀 산출물임을 뒷받침한다.
 
 1. `CLAUDE.md:25` — "large 모델은 int8 저장코덱(**`teammate_output/.../quantize_checkpoint.py`**)으로 1GB 캡 회피" → 원 위치가 **`teammate_output/`**, 즉 `.gitignore`가 "팀원 작업물, 커밋 금지"로 지정한 디렉토리
 2. `quantize_int4.py` docstring — "Extends **the team's** int8-rowwise-v1 codec (quantize_checkpoint.py)" → int8 코덱을 **"the team's"**로 지칭
 
-→ 정확한 대외 표현: **"준현의 int8 초안을 기반으로 제가 int4 group-128 코덱을 확장하고,
+→ 정확한 대외 표현: **"팀원 A의 int8 초안을 기반으로 제가 int4 group-128 코덱을 확장하고,
 최종 3모델 제출팩에 적용해 1GB 제약을 충족했습니다."** 전체 코덱을 단독 최초 구현했다고
 말하지는 않는다.
 
@@ -127,23 +127,23 @@ Consensus Sieve와 Colab 레인은 팀장 관할과 직접 구현을 구분한�
 
 | 경로 | 확정 담당 | 근거 종류 |
 |---|---|---|
-| `train_transformer.py` | **노진산·임준현 공동** | 사용자 확인 |
-| `quantize_checkpoint.py` | **임준현 int8 초안** | 저장소 정황 + 사용자 확인 |
+| `train_transformer.py` | **노진산·팀원 A 공동** | 사용자 확인 |
+| `quantize_checkpoint.py` | **팀원 A int8 초안** | 저장소 정황 + 사용자 확인 |
 | `quantize_int4.py` | **노진산 int4 확장·적용** | 사용자 확인 |
 | `script.py`, `pack/script.py` | **노진산 주도** | 사용자 확인 |
-| `build_oof_consensus.py` | **임준현** — 방법·코드·실행·해석 | 사용자 확인 |
-| `colab/*` | **임준현** | 사용자 확인 |
+| `build_oof_consensus.py` | **팀원 A** — 방법·코드·실행·해석 | 사용자 확인 |
+| `colab/*` | **팀원 A** | 사용자 확인 |
 | `export_teacher_logits.py`, `package_submission.py`, `train.py` | **노진산** | 사용자 확인 |
 | `pipeline_xlmr/*`, `submit/*`, `experiments/*`, `_track2_smoke/*` | **노진산** | 사용자 확인 |
 | `experiments/artifacts/*.json` | **노진산 실행** | 사용자 확인 |
-| `make_pres_figures.py`, `fig1~fig3`, 발표자료 | **노진산·김태연 공동** | 사용자 확인 |
+| `make_pres_figures.py`, `fig1~fig3`, 발표자료 | **노진산·팀원 C 공동** | 사용자 확인 |
 
 ### 아직 사용자 확인 필요
 
 | 파일 | 확인할 범위 |
 |---|---|
 | `finals/assets/script_mgn125.py` | 발표 그림이 아니라 mgn125 추론 계보 코드이므로 별도 작성자 확인 필요 |
-| 개별 `dataset_profile_*.png` | 데이터 분석은 노진산·목원주 공동으로 확인됐으나 파일별 최종 편집자 구분은 미확정 |
+| 개별 `dataset_profile_*.png` | 데이터 분석은 노진산·팀원 B 공동으로 확인됐으나 파일별 최종 편집자 구분은 미확정 |
 
 위 두 항목 외에는 이번 확인으로 담당 범위를 갱신했다.
 
@@ -155,10 +155,10 @@ Consensus Sieve와 Colab 레인은 팀장 관할과 직접 구현을 구분한�
 
 | 정정 전 | 문제 | 정정 후 |
 |---|---|---|
-| "int8/int4 코덱을 전부 혼자 최초 구현" | int8 초안은 준현, int4 확장·적용은 본인 | "준현의 int8 초안을 기반으로 **int4 코덱을 직접 확장·적용**하고 최종팩 무결성을 검증" |
+| "int8/int4 코덱을 전부 혼자 최초 구현" | int8 초안은 팀원 A, int4 확장·적용은 본인 | "팀원 A의 int8 초안을 기반으로 **int4 코덱을 직접 확장·적용**하고 최종팩 무결성을 검증" |
 | "OOF↔Public 캘리브레이션 오차 **±0.002**로 제출 없이 승격 판정" | ±0.002는 캘리브레이션 오차가 아니라 **노이즈 임계값**. 실측 편차는 focal 라인 **+0.013** (§9) | "단일 Public 델타 **0.002 미만은 노이즈로 간주**하는 판정 규칙을 운영했고, focal 라인은 OOF→Public **+0.013** 낙관 편차가 있어 내부 수치를 그대로 신뢰하지 않았다" |
 | "제출 없이 승격 여부를 판정" (전 영역) | **룰**은 OOF 게이트가 맞으나 **모델 레시피는 07-04 이후 Public-gated로 전환** (§3, §8) | "**룰**은 5-fold×교차시드 OOF 전수 통과분만 승격했고, **모델 레시피**는 방법론 전환 이후 Public을 결정 기준으로 삼되 0.002 노이즈 임계를 적용했다" |
-| "Consensus Sieve를 제가 설계·구현" | 방법·코드·실행·해석은 준현 담당 | "준현이 주도한 Consensus Sieve를 팀장으로 검토하고 최종 시스템에 통합·채택" |
+| "Consensus Sieve를 제가 설계·구현" | 방법·코드·실행·해석은 팀원 A 담당 | "팀원 A가 주도한 Consensus Sieve를 팀장으로 검토하고 최종 시스템에 통합·채택" |
 | "최종 추론 파이프라인은 팀 공용 코드" | `script.py` 시작과 최종 `pack/script.py` 완성은 본인 주도 | "직렬화→3모델→저마진 라우팅→룰로 이어지는 최종 추론 파이프라인을 주도 구현" |
 | "115회 제출" | 내부 로그 기준은 **120회**(유효 114 · 오류 6) | 병기 — "Dacon 공식 카운트 115회 / 내부 로그 120회(유효 채점 114 · 오류 6 · 최고점 갱신 24)" |
 | "추론 7분 15초" 단독 표기 | `finals/04` §0 요약표는 **7:23**(최초 기록 제출 기준)으로 적혀 있어 문서 내 불일치 | "**최종 선택본 기준 7:15**(제출 34730), 동점 미선택팩은 7:23(제출 34519)" |
@@ -176,7 +176,7 @@ Consensus Sieve와 Colab 레인은 팀장 관할과 직접 구현을 구분한�
 | 대회 최종 순위 | **9위 / 269팀** | DACON 대회 인증서(2026-09-04 발급) |
 | 1위 갭 | 0.00112 (7위와 0.00019) | `finals/01` §2 · `finals/13` |
 | 추론 시간 | **7:15** (선택본) / 7:23 (동점 미선택) | `finals/04` 제출 34730 "**7:15** … ⭐Dacon 최종 선택본" · 34519 "7:23". ⚠️ §0 요약표는 7:23 — 선택본 기준은 **7:15** |
-| 패키지 용량 | **1,005.6MB** (1,005,612,893 B) | `finals/11_발표컨셉_확정.md` "준현: 1,005,612,893 B, SHA 72b608d4" + `finals/12` #9 본인 실물 검증 |
+| 패키지 용량 | **1,005.6MB** (1,005,612,893 B) | `finals/11_발표컨셉_확정.md` "팀원 A: 1,005,612,893 B, SHA 72b608d4" + `finals/12` #9 본인 실물 검증 |
 | 제출 횟수 | 공식 115 / 내부 120 (유효 114 · 오류 6 · 갱신 24) | `finals/04` §0 |
 | 라우팅 비율 | 34.1% (@margin<1.0) | `finals/01` §3 dose-response 3점 실측 |
 | Sieve 기여 | +0.0043 (0.7896 → 0.7939) | `finals/02` §② · `finals/01` §2 레버 분해표 |
@@ -189,7 +189,7 @@ Consensus Sieve와 Colab 레인은 팀장 관할과 직접 구현을 구분한�
 대회 규정상 **Public 점수가 곧 최종 점수**였고(private holdout 없음), 리더보드는 다음과 같이 쓰였다.
 
 1. **초기(~07-04)** — 내부 3-fold session OOF를 승격 게이트로 사용. `CLAUDE.md`: "승격 판단은 3-fold session OOF. fixed 단일 split은 낙관적(+0.009) → 스크린 전용."
-2. **전환(07-04~05)** — OOF 게이트 1회당 GPU 3회 비용이 과도해 **Public-gated 프로모션으로 전환**. OOF는 게이트에서 **앙상블·bias/rule 튜닝 도구로 강등**. (`finals/ref_슬랙로그_태연백업.md:394`)
+2. **전환(07-04~05)** — OOF 게이트 1회당 GPU 3회 비용이 과도해 **Public-gated 프로모션으로 전환**. OOF는 게이트에서 **앙상블·bias/rule 튜닝 도구로 강등**. (`finals/ref_슬랙로그_팀원 C백업.md:394`)
 3. **판정 규칙** — 하루 10슬롯 예산, **단일 Public 델타 0.002 미만은 노이즈**로 간주해 근거로 채택하지 않음.
 4. **인과 주장은 Public으로 하지 않음** — 레시피 효과 주장(예: amw4 +0.00185)은 리더보드가 아니라 **짝 대조군 스크린**에서 산출. (`finals/13` #27)
 5. **룰은 끝까지 내부 게이트 유지** — 5-fold × 교차시드 전부에서 rescue > harm인 룰만 배포. (`finals/02` §③)

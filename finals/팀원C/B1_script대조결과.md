@@ -1,4 +1,4 @@
-# B-1 script.py 실물 대조 결과 (2026-07-15, 태연)
+# B-1 script.py 실물 대조 결과 (2026-07-15, 팀원 C)
 
 > 대상: `script.py` (145KB, 3342줄) — 진산님 제공 실물 추론 코드
 > 목적: ① 초안 서술과 실물 일치 여부 ② pptx vs md 불일치 진실 판정 ③ 발표 슬라이드 5 확정
@@ -51,7 +51,7 @@ main() → run_hf_inference(model_dir="./model", ...)
 
 **(b) 저마진 라우팅 임계값 1.25** — md가 말한 1.0이 아님
 - md 초안·05 재현체인이 "margin 1.0 + seed7070"을 amw4의 정의로 적었는데, **이 script.py는 1.25**.
-- **✅ 진산님 확정(07-15)**: 이 파일은 **`script_mgn125.py`** (SHA `f286f21d…`, 145,762B) — **mgn125 팩 코드**. 최종 선택본은 `rfinal_amhyb_m10.zip`(7:15)이고, **B-1 대조 기준 = mgn125 script 구조 + margin 1.0 + Weak4-AM 게이트**(margin 1.0과 Weak4-AM 부분은 준현 명세 도착 시 확정).
+- **✅ 진산님 확정(07-15)**: 이 파일은 **`script_mgn125.py`** (SHA `f286f21d…`, 145,762B) — **mgn125 팩 코드**. 최종 선택본은 `rfinal_amhyb_m10.zip`(7:15)이고, **B-1 대조 기준 = mgn125 script 구조 + margin 1.0 + Weak4-AM 게이트**(margin 1.0과 Weak4-AM 부분은 팀원 A 명세 도착 시 확정).
 - 즉 **파이프라인 뼈대(직렬화→sparse→라우팅→룰12종→leak)는 이 mgn125 코드가 최종과 동일**, 차이는 라우팅 임계값(1.25→1.0)과 Weak4-AM 게이트 추가뿐.
 
 **(c) leak_lookup override** — §4에서 별도.
@@ -76,15 +76,15 @@ leak_lookup은 **4개 tier**로 나뉨:
 **왜 이게 판단 필요한가:**
 - positional/aligned tier는 **test 세트 자체에 답이 들어있는 걸 읽는 것** → 정당한 추론 기법으로 볼 여지 큼 (외부 정보 안 씀).
 - 하지만 train_prompt/train_prompt_last tier는 **train 라벨을 test에 직접 매핑** → 이게 대회 규칙상 허용되는 "학습 데이터 활용"인지, 아니면 문제 소지가 있는지는 **규칙 대조 + 팀 판단 필요.** 
-- 변수명이 `leak_`이고 주석이 "Recover labels", "holdout precision vs model"인 점에서, **작성자(준현?)도 이걸 leakage 계열로 인식**하고 있었음.
-- **태연 입장**: 이건 제가 "괜찮다/문제다" 단정할 사안이 아님. 다만 **발표·코드제출 전에 팀이 반드시 명시적으로 결정**해야 함. 최종 제출본에 `leak_lookup.json.gz`가 **동봉돼 있었는지**부터 확인해야 함 (동봉됐으면 우리 0.79766 점수에 train override가 이미 기여한 것).
+- 변수명이 `leak_`이고 주석이 "Recover labels", "holdout precision vs model"인 점에서, **작성자(팀원 A?)도 이걸 leakage 계열로 인식**하고 있었음.
+- **팀원 C 입장**: 이건 제가 "괜찮다/문제다" 단정할 사안이 아님. 다만 **발표·코드제출 전에 팀이 반드시 명시적으로 결정**해야 함. 최종 제출본에 `leak_lookup.json.gz`가 **동봉돼 있었는지**부터 확인해야 함 (동봉됐으면 우리 0.79766 점수에 train override가 이미 기여한 것).
 
-**확인 질문 (진산·준현):**
+**확인 질문 (진산·팀원 A):**
 1. 최종 선택본(amhyb_m10) 팩에 `leak_lookup.json.gz`가 동봉돼 있나? (있으면 점수에 반영됨)
 2. train_prompt/train_prompt_last tier가 실제로 test에서 override를 발생시켰나? (제출 로그에 "Leak overrides: total=N ... train_prompt_last=X train_prompt=Y" 출력이 남아있을 것)
 3. 대회 규칙상 train 라벨의 prompt 매핑이 허용 범위인지 — 이건 규칙 원문 대조 필요.
 
-→ **이 사안은 발표 슬라이드 서사(특히 슬라이드 11 "실패 원장"에 leak 관련 언급이 있는지)와 코드제출 재현성 양쪽에 걸림.** 준현님 명세 요청에 "leak_lookup tier별로 최종 제출본에서 뭐가 활성이었는지" 항목 추가 권장.
+→ **이 사안은 발표 슬라이드 서사(특히 슬라이드 11 "실패 원장"에 leak 관련 언급이 있는지)와 코드제출 재현성 양쪽에 걸림.** 팀원 A님 명세 요청에 "leak_lookup tier별로 최종 제출본에서 뭐가 활성이었는지" 항목 추가 권장.
 
 ## 5. 발표 슬라이드 5 (B-1) — 실물 기준 확정본
 
@@ -106,14 +106,14 @@ script.py 대조로 슬라이드 5 추론 파이프라인을 실물에 맞춰 �
 
 ## 6. 진산님 액션 (우선순위) — 07-15 회신 반영 후 갱신
 
-1. **[🔴 최우선·미해결] leak_lookup 판단** — 최종 팩(amhyb_m10)에 `leak_lookup.json.gz` 동봉 여부 확인 + 규칙 대조 + 팀 결정. 준현 명세에 tier별 활성 내역 추가 요청. **← 유일하게 남은 미결 리스크.**
-2. ~~[🔴] 이 script.py가 mgn125인지 amhyb인지~~ **✅ 해소: mgn125 확정** (진산 07-15). B-1 기준 = mgn125 구조 + margin 1.0 + Weak4-AM(준현 대기).
+1. **[🔴 최우선·미해결] leak_lookup 판단** — 최종 팩(amhyb_m10)에 `leak_lookup.json.gz` 동봉 여부 확인 + 규칙 대조 + 팀 결정. 팀원 A 명세에 tier별 활성 내역 추가 요청. **← 유일하게 남은 미결 리스크.**
+2. ~~[🔴] 이 script.py가 mgn125인지 amhyb인지~~ **✅ 해소: mgn125 확정** (진산 07-15). B-1 기준 = mgn125 구조 + margin 1.0 + Weak4-AM(팀원 A 대기).
 3. **[🟡] model 폴더 용량** — 512MB냐 1005MB냐. amhyb 최종팩 기준 `ls -la ./model ./model_b ./model_c`. (pptx 512 vs md 1005 통일용)
 4. **[🟡] pptx 전면 갱신** — 10룰→12룰, sparse SVC 추가, 라우팅(1.25→최종 1.0), 갭 0.00112. §2 대조표 기준.
 5. **[🟡] 슬라이드 5** — 위 §5 확정본으로 (leak 사안 결정 후 ⑧ 포함 여부 정리).
 
 ---
 
-### 태연 메모
+### 팀원 C 메모
 - 이 script.py는 라우팅 1.25 + 12룰 + sparse SVC + leak_lookup 구조. **mgn125 계열로 강하게 추정** (amw4는 margin 1.0이어야 함).
 - **가장 중요한 건 §4 leak_lookup.** 나머지는 숫자·서사 정리지만, 이건 점수 정당성·규칙 준수에 직결. 발표 나가기 전에 팀이 명시적으로 다뤄야 함. 제가 임의 판단 안 하고 그대로 올립니다.
