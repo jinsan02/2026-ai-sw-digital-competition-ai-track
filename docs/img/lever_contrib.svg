@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-12 0 1024 368" width="1024" height="368" role="img" aria-label="레버별 Public 기여 — 단계마다 더한 몫: HCX-0.5B 단독 (non-KD refit) 0.7852 + KD +0.0039 → 0.7891, + 조건부 α +0.0005 → 0.7896, + consensus sieve +0.0043 → 0.7939, + 앙상블 · 룰 스택 · 자기증류 +0.0033 → 0.7972, + Weak4 action-margin KD +0.0005 → 0.7977">
+<title>레버별 Public 기여 — 단계마다 더한 몫</title>
+<style>
+  text { font-family: system-ui, -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; fill: #1f2328; }
+  .ink { fill: #1f2328; } .sub { fill: #59636e; } .muted { fill: #818b98; } .lbl { fill: #59636e; }
+  .grid { stroke: #eaeef2; stroke-width: 1; } .base { stroke: #afb8c1; stroke-width: 1; }
+  .s1 { fill: #2a78d6; } .s2 { fill: #eb6834; } .s3 { fill: #1baf7a; } .s4 { fill: #eda100; }
+  .s5 { fill: #e87ba4; } .s6 { fill: #008300; } .s7 { fill: #4a3aa7; } .s8 { fill: #e34948; }
+  .dim { fill: #d0d7de; } .dim2 { fill: #8c959f; }
+  .box  { fill: #f6f8fa; stroke: #d0d7de; stroke-width: 1.2; }
+  .em   { fill: #e3eefb; stroke: #2a78d6; stroke-width: 1.6; }
+  .mute { fill: #ffffff; stroke: #d0d7de; stroke-width: 1.2; }
+  .k-auto { fill: #e0f5ec; stroke: #1baf7a; stroke-width: 1.4; }
+  .k-man  { fill: #fdf3d8; stroke: #eda100; stroke-width: 1.4; }
+  .k-todo { fill: none; stroke: #8c959f; stroke-width: 1.2; stroke-dasharray: 5 4; }
+  .grp { fill: none; stroke: #d0d7de; stroke-width: 1; stroke-dasharray: 3 3; }
+  .ln { stroke: #6e7781; stroke-width: 1.4; fill: none; } .ah { fill: #6e7781; }
+  .ln-em { stroke: #2a78d6; stroke-width: 2; fill: none; } .ah-em { fill: #2a78d6; }
+  .dash { stroke-dasharray: 5 4; }
+  @media (prefers-color-scheme: dark) {
+    text, .ink { fill: #e6edf3; } .sub, .lbl { fill: #9198a1; } .muted { fill: #8b949e; }
+    .grid { stroke: #262c36; } .base { stroke: #59636e; }
+    .s1 { fill: #3987e5; } .s2 { fill: #d95926; } .s3 { fill: #199e70; } .s4 { fill: #c98500; }
+    .s5 { fill: #d55181; } .s6 { fill: #008300; } .s7 { fill: #9085e9; } .s8 { fill: #e66767; }
+    .dim { fill: #3d444d; } .dim2 { fill: #6e7681; }
+    .box  { fill: #161b22; stroke: #3d444d; }
+    .em   { fill: #0f2340; stroke: #3987e5; }
+    .mute { fill: #0d1117; stroke: #3d444d; }
+    .k-auto { fill: #0c2a1f; stroke: #199e70; } .k-man { fill: #2e2408; stroke: #c98500; } .k-todo { stroke: #6e7681; }
+    .grp { stroke: #3d444d; }
+    .ln { stroke: #8b949e; } .ah { fill: #8b949e; } .ln-em { stroke: #3987e5; } .ah-em { fill: #3987e5; }
+  }
+</style>
+<text x="0" y="24" font-size="18" font-weight="600" class="ink">레버별 Public 기여 — 단계마다 더한 몫</text><text x="0" y="48" font-size="14" class="sub">Dacon Public Macro-F1 실측 · Public = 최종 점수 · 베이스라인 0.4358 → 최종 0.7977</text>
+<g transform="translate(0,64)">
+<text x="0" y="14" class="sub" font-size="13" font-weight="600">출발점 · HCX-0.5B 단독 (non-KD refit) = 0.7852</text><text x="1000" y="14" class="muted" font-size="12" text-anchor="end">누적 Public</text><line class="grid" x1="330" y1="34" x2="330" y2="234"/><text x="330" y="252" class="muted" font-size="12" text-anchor="middle">+0.000</text><line class="grid" x1="426" y1="34" x2="426" y2="234"/><text x="426" y="252" class="muted" font-size="12" text-anchor="middle">+0.001</text><line class="grid" x1="522" y1="34" x2="522" y2="234"/><text x="522" y="252" class="muted" font-size="12" text-anchor="middle">+0.002</text><line class="grid" x1="618" y1="34" x2="618" y2="234"/><text x="618" y="252" class="muted" font-size="12" text-anchor="middle">+0.003</text><line class="grid" x1="714" y1="34" x2="714" y2="234"/><text x="714" y="252" class="muted" font-size="12" text-anchor="middle">+0.004</text><line class="grid" x1="810" y1="34" x2="810" y2="234"/><text x="810" y="252" class="muted" font-size="12" text-anchor="middle">+0.005</text><text x="0" y="52" class="ink" font-size="14" font-weight="400">+ KD</text><text x="0" y="68" class="muted" font-size="12">m8 교사, α0.5 · T3</text><path class="s1" d="M330,45 H700.4 Q704.4,45 704.4,49 V59 Q704.4,63 700.4,63 H330 Z"/><text x="712.4" y="59" class="sub" font-size="13">+0.0039</text><text x="1000" y="59" class="ink" font-size="14" text-anchor="end" font-weight="400">0.7891</text><text x="0" y="92" class="ink" font-size="14" font-weight="400">+ 조건부 α</text><text x="0" y="108" class="muted" font-size="12">Weak4 행만 0.7</text><path class="s1" d="M330,85 H374 Q378,85 378,89 V99 Q378,103 374,103 H330 Z"/><text x="386" y="99" class="sub" font-size="13">+0.0005</text><text x="1000" y="99" class="ink" font-size="14" text-anchor="end" font-weight="400">0.7896</text><text x="0" y="132" class="ink" font-size="14" font-weight="400">+ consensus sieve</text><text x="0" y="148" class="muted" font-size="12">팀원 A 담당</text><path class="s1" d="M330,125 H738.8 Q742.8,125 742.8,129 V139 Q742.8,143 738.8,143 H330 Z"/><text x="750.8" y="139" class="sub" font-size="13">+0.0043</text><text x="1000" y="139" class="ink" font-size="14" text-anchor="end" font-weight="400">0.7939</text><text x="0" y="179" class="ink" font-size="14" font-weight="400">+ 앙상블 · 룰 스택 · 자기증류</text><path class="s1" d="M330,165 H642.8 Q646.8,165 646.8,169 V179 Q646.8,183 642.8,183 H330 Z"/><text x="654.8" y="179" class="sub" font-size="13">+0.0033</text><text x="1000" y="179" class="ink" font-size="14" text-anchor="end" font-weight="400">0.7972</text><text x="0" y="212" class="ink" font-size="14" font-weight="400">+ Weak4 action-margin KD</text><text x="0" y="228" class="muted" font-size="12">margin 1.0, s7070</text><path class="s1" d="M330,205 H374 Q378,205 378,209 V219 Q378,223 374,223 H330 Z"/><text x="386" y="219" class="sub" font-size="13">+0.0005</text><text x="1000" y="219" class="ink" font-size="14" text-anchor="end" font-weight="600">0.7977</text><line class="base" x1="330" y1="30" x2="330" y2="234" style="stroke-width:1.5"/><text x="0" y="282" class="muted" font-size="13">단일 Public 델타가 0.002 미만이면 노이즈로 버리는 것이 판정 임계값이었다 — 캘리브레이션 오차가 아니다(README 「검증 방법론」).</text>
+</g>
+</svg>

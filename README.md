@@ -3,12 +3,7 @@
 AI 코딩 에이전트의 다음 행동(action)을 14개 클래스 중 하나로 예측하는 코드 제출형 대회.
 **예선 Macro-F1 0.7977 · 예선 8위로 본선 진출 · 대회 최종 9위/269팀 · AI부문 후원기업상** (한신대학교 팀 토큰강도)
 
-## 태스크
-
-- 입력: `session_meta`(세션/작업공간 메타) + `history`(0~12개 user/assistant_action 교대) + `current_prompt`
-- 출력: 다음 행동 1개 — `read_file` / `grep_search` / `list_directory` / `glob_pattern` / `edit_file` / `write_file` / `apply_patch` / `run_bash` / `run_tests` / `lint_or_typecheck` / `ask_user` / `plan_task` / `web_search` / `respond_only`
-- 평가지표: **Macro-F1** (14개 클래스) · Public = 최종 점수 (private holdout 없음)
-- 제약: 패키지 ≤ 1GB · 추론 ≤ 10분 · 인터넷 불가 · T4 16GB
+<p align="center"><img src="docs/img/inference_architecture.svg" alt="최종 추론 아키텍처: main이 전 행 추론, 마진 1.0 미만 34.1% 행만 model_b·model_c와 z-centered 로짓 평균, 후처리 룰 12종" width="100%"></p>
 
 ## 대회 결과
 
@@ -24,22 +19,21 @@ AI 코딩 에이전트의 다음 행동(action)을 14개 클래스 중 하나로
 
 > **순위 구분:** `finals/*`의 8위·12팀 표기는 2026-07-15 예선 리더보드와 본선 진출선에 관한 당시 기록이다. 발표·심사를 포함한 대회 전체 결과는 최종 **9위/269팀**이다.
 
-### 최종 아키텍처
+<details>
+<summary><b>태스크 — 입력 · 출력 · 평가지표 · 제약</b></summary>
 
-```
-입력 (test.jsonl 30,000행) → current_v1 직렬화 (max_len 384)
-  ↓
-[main]     HCX-0.5B · amw4 recipe s7070 · INT8 (568MB)  ← 전 행 추론
-  ↓  저마진 라우팅: top1-top2 margin < 1.0 인 행만 (34.1%)
-[model_b]  구 recipe s909 · INT4 (292MB)  ┐
-[model_c]  amw4 recipe s42 · INT4 (292MB) ┘ → z-centered 로짓 평균
-  ↓
-후처리 룰 12종 (전부 OOF 5-fold × 교차시드 통과분)
-  ↓
-output/submission.csv
-```
+- 입력: `session_meta`(세션/작업공간 메타) + `history`(0~12개 user/assistant_action 교대) + `current_prompt`
+- 출력: 다음 행동 1개 — `read_file` / `grep_search` / `list_directory` / `glob_pattern` / `edit_file` / `write_file` / `apply_patch` / `run_bash` / `run_tests` / `lint_or_typecheck` / `ask_user` / `plan_task` / `web_search` / `respond_only`
+- 평가지표: **Macro-F1** (14개 클래스) · Public = 최종 점수 (private holdout 없음)
+- 제약: 패키지 ≤ 1GB · 추론 ≤ 10분 · 인터넷 불가 · T4 16GB
+</details>
 
 ### 레버별 Public 기여 (실측)
+
+<p align="center"><img src="docs/img/lever_contrib.svg" alt="레버별 Public 기여: 0.7852 → KD +0.0039 → 조건부 α +0.0005 → consensus sieve +0.0043 → 앙상블·룰·자기증류 +0.0033 → action-margin KD +0.0005 = 0.7977" width="100%"></p>
+
+<details>
+<summary><b>표로 보기</b></summary>
 
 | 단계 | Public | Δ |
 |---|---|---|
@@ -49,8 +43,11 @@ output/submission.csv
 | + consensus sieve | 0.7939 | +0.0043 |
 | + 앙상블 · 룰 스택 · 자기증류 | 0.7972 | +0.0033 |
 | + Weak4 action-margin KD (margin 1.0, s7070) | **0.7977** | +0.0005 |
+</details>
 
 ## 핵심 기술 기여 (팀 성과)
+
+<p align="center"><img src="docs/img/training_pipeline.svg" alt="학습 파이프라인과 담당 구분: 교사 로짓·int4·패키징은 노진산, Consensus Sieve·int8 초안은 팀원 A, 학습 본체는 공동" width="100%"></p>
 
 > 아래 6건은 **4인 팀(토큰강도)의 공동 성과**다. 개인별 기여 범위는 [CONTRIBUTIONS.md](CONTRIBUTIONS.md)에 파일 단위로 구분해 두었다.
 
@@ -87,7 +84,8 @@ output/submission.csv
 | [CONTRIBUTIONS.md](CONTRIBUTIONS.md) | 본인 직접 작성 / 본인 실험·전략 결정 / 팀원 산출물을 파일 단위로 구분하고, 남은 미확정 2건을 별도 표시. 과대 서술 정정표, 수치↔근거 매핑, Public 리더보드 사용 방식, ±0.002의 정확한 정체 포함 |
 | [docs/interview_evidence.md](docs/interview_evidence.md) | 결정 · 근거(파일:행) · 결과 · 본인 역할 표와 파일별 구현 분업 |
 
-### 검증 방법론에 대한 정확한 서술
+<details>
+<summary><b>검증 방법론에 대한 정확한 서술 — ±0.002의 정체</b></summary>
 
 이 저장소의 일부 발표용 문서(`finals/14_발표대본_초안.md`)에 "OOF↔Public 캘리브레이션 오차 ±0.002"라는 표현이 있으나, **저장소 근거로는 뒷받침되지 않는다.**
 
@@ -96,8 +94,12 @@ output/submission.csv
 - 승격 판정도 전 기간 동일하지 않았다. 07-04 이후 **Public-gated 프로모션으로 전환**하고 OOF는 앙상블·룰 튜닝 도구로 강등했다. **"제출 없이 판정"은 룰에 대해서만 사실**이다.
 
 자세한 추적 결과는 [CONTRIBUTIONS.md §9](CONTRIBUTIONS.md)에 있다.
+</details>
 
 ## 디렉토리 구조
+
+<details>
+<summary><b>디렉토리 구조</b></summary>
 
 ```
 dacon/
@@ -127,12 +129,16 @@ dacon/
 
 > 모델 가중치(`*.safetensors`/`*.pt`), 교사 로짓, 대회 데이터, 제출 zip은 `.gitignore`로 제외됐다.
 > 저장소는 학습·패키징·추론 코드를 감사할 수 있게 하지만, 제외된 입력 없이 최종 점수의 완전 재현을 보장하지 않는다.
+</details>
 
 ## 재현 범위
 
 아래 명령과 레시피는 보존돼 있지만, 이 저장소만으로 최종 0.7977을 즉시 재현할 수는 없다.
 대회 데이터, 베이스 모델, 교사 로짓/가중치와 최종 제출 가중치를 별도로 확보하고 동일 환경을
 구성해야 한다.
+
+<details>
+<summary><b>챔피언 레시피 · 양자화 명령 · 환경</b></summary>
 
 ```bash
 # 챔피언 레시피 (amw4) — 상세는 finals/05_학습코드_재현성.md
@@ -156,6 +162,7 @@ python quantize_int4.py quantize --input model.safetensors --output model.int4.s
 
 학습 환경: Python 3.10~3.11 / torch 2.5~2.7 (cu121·cu128) / transformers 4.51.3
 추론 환경(평가 서버): Ubuntu 22.04.5 / T4 16GB / Python 3.11.15 / transformers 4.46.3
+</details>
 
 ## 자원 출처 및 라이선스
 

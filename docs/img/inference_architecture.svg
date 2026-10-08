@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-12 0 1024 632" width="1024" height="632" role="img" aria-label="30,000행을 current_v1로 직렬화해 main(HCX-0.5B, INT8)이 전 행을 추론하고, 마진이 1.0 미만인 34.1% 행만 model_b·model_c(INT4)와 z-centered 로짓 평균을 낸 뒤 후처리 룰 12종을 거쳐 제출 파일을 만든다">
+<title>최종 추론 아키텍처 — 확신이 낮은 34.1%만 앙상블로</title>
+<style>
+  text { font-family: system-ui, -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; fill: #1f2328; }
+  .ink { fill: #1f2328; } .sub { fill: #59636e; } .muted { fill: #818b98; } .lbl { fill: #59636e; }
+  .grid { stroke: #eaeef2; stroke-width: 1; } .base { stroke: #afb8c1; stroke-width: 1; }
+  .s1 { fill: #2a78d6; } .s2 { fill: #eb6834; } .s3 { fill: #1baf7a; } .s4 { fill: #eda100; }
+  .s5 { fill: #e87ba4; } .s6 { fill: #008300; } .s7 { fill: #4a3aa7; } .s8 { fill: #e34948; }
+  .dim { fill: #d0d7de; } .dim2 { fill: #8c959f; }
+  .box  { fill: #f6f8fa; stroke: #d0d7de; stroke-width: 1.2; }
+  .em   { fill: #e3eefb; stroke: #2a78d6; stroke-width: 1.6; }
+  .mute { fill: #ffffff; stroke: #d0d7de; stroke-width: 1.2; }
+  .k-auto { fill: #e0f5ec; stroke: #1baf7a; stroke-width: 1.4; }
+  .k-man  { fill: #fdf3d8; stroke: #eda100; stroke-width: 1.4; }
+  .k-todo { fill: none; stroke: #8c959f; stroke-width: 1.2; stroke-dasharray: 5 4; }
+  .grp { fill: none; stroke: #d0d7de; stroke-width: 1; stroke-dasharray: 3 3; }
+  .ln { stroke: #6e7781; stroke-width: 1.4; fill: none; } .ah { fill: #6e7781; }
+  .ln-em { stroke: #2a78d6; stroke-width: 2; fill: none; } .ah-em { fill: #2a78d6; }
+  .dash { stroke-dasharray: 5 4; }
+  @media (prefers-color-scheme: dark) {
+    text, .ink { fill: #e6edf3; } .sub, .lbl { fill: #9198a1; } .muted { fill: #8b949e; }
+    .grid { stroke: #262c36; } .base { stroke: #59636e; }
+    .s1 { fill: #3987e5; } .s2 { fill: #d95926; } .s3 { fill: #199e70; } .s4 { fill: #c98500; }
+    .s5 { fill: #d55181; } .s6 { fill: #008300; } .s7 { fill: #9085e9; } .s8 { fill: #e66767; }
+    .dim { fill: #3d444d; } .dim2 { fill: #6e7681; }
+    .box  { fill: #161b22; stroke: #3d444d; }
+    .em   { fill: #0f2340; stroke: #3987e5; }
+    .mute { fill: #0d1117; stroke: #3d444d; }
+    .k-auto { fill: #0c2a1f; stroke: #199e70; } .k-man { fill: #2e2408; stroke: #c98500; } .k-todo { stroke: #6e7681; }
+    .grp { stroke: #3d444d; }
+    .ln { stroke: #8b949e; } .ah { fill: #8b949e; } .ln-em { stroke: #3987e5; } .ah-em { fill: #3987e5; }
+  }
+</style>
+<text x="0" y="24" font-size="18" font-weight="600" class="ink">최종 추론 아키텍처 — 확신이 낮은 34.1%만 앙상블로</text><text x="0" y="48" font-size="14" class="sub">main이 전 행을 추론하고, top1−top2 마진 &lt; 1.0인 행만 보조 모델 2개와 평균 · 파란 경로 = 저마진 라우팅</text>
+<g transform="translate(0,64)">
+<rect class="box" x="0" y="30" width="180" height="60" rx="8"/>
+<text x="90" y="55" font-size="14" text-anchor="middle" font-weight="600" class="ink">입력</text>
+<text x="90" y="74" font-size="13" text-anchor="middle" class="sub">test.jsonl 30,000행</text>
+<rect class="box" x="230" y="30" width="200" height="60" rx="8"/>
+<text x="330" y="55" font-size="14" text-anchor="middle" font-weight="600" class="ink">직렬화</text>
+<text x="330" y="74" font-size="13" text-anchor="middle" class="sub">current_v1 · max_len 384</text>
+<rect class="box" x="480" y="18" width="260" height="84" rx="8"/>
+<text x="610" y="45.5" font-size="14" text-anchor="middle" font-weight="600" class="ink">main · HCX-0.5B</text>
+<text x="610" y="64.5" font-size="13" text-anchor="middle" class="sub">amw4 recipe s7070</text>
+<text x="610" y="83.5" font-size="13" text-anchor="middle" class="sub">INT8 568MB · 전 행 추론</text>
+<polyline class="ln" points="180,60 221,60"/>
+<polygon class="ah" points="230,60 221,55 221,65"/>
+<polyline class="ln" points="430,60 471,60"/>
+<polygon class="ah" points="480,60 471,55 471,65"/>
+<polygon class="box" points="610,136 690,180 610,224 530,180"/>
+<text x="610" y="176" font-size="13" text-anchor="middle" font-weight="600" class="ink">top1−top2</text>
+<text x="610" y="194" font-size="13" text-anchor="middle" font-weight="600" class="ink">마진 &lt; 1.0 ?</text>
+<polyline class="ln" points="610,102 610,127"/>
+<polygon class="ah" points="610,136 615,127 605,127"/>
+<text x="618" y="124" font-size="12.5" class="lbl">로짓</text>
+<rect class="box" x="300" y="260" width="220" height="56" rx="8"/>
+<text x="410" y="283" font-size="14" text-anchor="middle" font-weight="600" class="ink">main 로짓 그대로</text>
+<text x="410" y="302" font-size="13" text-anchor="middle" class="sub">확신이 높은 행</text>
+<polyline class="ln" points="530,180 410,180 410,251"/>
+<polygon class="ah" points="410,260 415,251 405,251"/>
+<text x="470" y="172" font-size="12.5" class="lbl" text-anchor="middle">아니오</text>
+<rect class="em" x="650" y="270" width="170" height="70" rx="8"/>
+<text x="735" y="290.5" font-size="14" text-anchor="middle" font-weight="600" class="ink">model_b</text>
+<text x="735" y="309.5" font-size="13" text-anchor="middle" class="sub">구 recipe s909</text>
+<text x="735" y="328.5" font-size="13" text-anchor="middle" class="sub">INT4 292MB</text>
+<rect class="em" x="830" y="270" width="170" height="70" rx="8"/>
+<text x="915" y="290.5" font-size="14" text-anchor="middle" font-weight="600" class="ink">model_c</text>
+<text x="915" y="309.5" font-size="13" text-anchor="middle" class="sub">amw4 recipe s42</text>
+<text x="915" y="328.5" font-size="13" text-anchor="middle" class="sub">INT4 292MB</text>
+<polyline class="ln-em" points="690,180 825,180 825,240 735,240 735,261"/>
+<polygon class="ah-em" points="735,270 740,261 730,261"/>
+<text x="760" y="172" font-size="12.5" class="lbl" text-anchor="middle">예 · 34.1% 행</text>
+<polyline class="ln-em" points="825,240 915,240 915,261"/>
+<polygon class="ah-em" points="915,270 920,261 910,261"/>
+<rect class="em" x="680" y="380" width="300" height="56" rx="8"/>
+<text x="830" y="403" font-size="14" text-anchor="middle" font-weight="600" class="ink">z-centered 로짓 평균</text>
+<text x="830" y="422" font-size="13" text-anchor="middle" class="sub">3개 모델 · main + model_b + model_c</text>
+<polyline class="ln-em" points="735,340 735,371"/>
+<polygon class="ah-em" points="735,380 740,371 730,371"/>
+<polyline class="ln-em" points="915,340 915,371"/>
+<polygon class="ah-em" points="915,380 920,371 910,371"/>
+<rect class="box" x="300" y="470" width="300" height="60" rx="8"/>
+<text x="450" y="495" font-size="14" text-anchor="middle" font-weight="600" class="ink">후처리 룰 12종</text>
+<text x="450" y="514" font-size="13" text-anchor="middle" class="sub">OOF 5-fold × 교차시드 통과분만</text>
+<polyline class="ln" points="410,316 410,461"/>
+<polygon class="ah" points="410,470 415,461 405,461"/>
+<polyline class="ln-em" points="830,436 830,500 609,500"/>
+<polygon class="ah-em" points="600,500 609,505 609,495"/>
+<text x="720" y="492" font-size="12.5" class="lbl" text-anchor="middle">앙상블 로짓</text>
+<rect class="box" x="0" y="470" width="230" height="60" rx="8"/>
+<text x="115" y="495" font-size="14" text-anchor="middle" font-weight="600" class="ink">submission.csv</text>
+<text x="115" y="514" font-size="13" text-anchor="middle" class="sub">14개 행동 중 1개</text>
+<polyline class="ln" points="300,500 239,500"/>
+<polygon class="ah" points="230,500 239,505 239,495"/>
+<text x="0" y="300" font-size="14" class="ink" font-weight="600">제약 대비 실측</text>
+<text x="0" y="324" font-size="13" class="lbl">추론 7분 15초 / 10분</text>
+<text x="0" y="346" font-size="13" class="lbl">패키지 1,005.6MB / 1GB</text>
+<text x="0" y="368" font-size="13" class="lbl">T4 16GB · 인터넷 불가</text>
+</g>
+</svg>
